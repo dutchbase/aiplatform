@@ -2,12 +2,12 @@
 
 ## Current Position
 
-Phase: 5 of 25 (Sessie & Profiel)
+Phase: 6 of 25 (URL Structuur & Routing)
 Plan: 1 of 1 (in phase)
 Status: Phase complete
-Last activity: 2026-02-09 - Completed 05-01-PLAN.md
+Last activity: 2026-02-09 - Completed 06-01-PLAN.md
 
-Progress: [=====------------------------] 20% (5/25 phases)
+Progress: [======-----------------------] 24% (6/25 phases)
 
 ## Accumulated Decisions
 
@@ -42,6 +42,9 @@ Progress: [=====------------------------] 20% (5/25 phases)
 | 05-01-D2 | 05 | Signout via form POST to existing /auth/signout Route Handler | Reuse Phase 4 infrastructure, progressive enhancement, no JS needed |
 | 05-01-D3 | 05 | useFormState from react-dom (not useActionState from react) | Project uses React 18.3.1 - useActionState is React 19+ only |
 | 05-01-D4 | 05 | defaultValue (not value) for display name input | Uncontrolled input allows editing without onChange handler - simpler for forms with Server Actions |
+| 06-01-D1 | 06 | Dynamic params as Promise pattern | Next.js 14+ requires async params for dynamic routes |
+| 06-01-D2 | 06 | Server Components for all routes | Static content pages don't need client-side JavaScript - better performance and SEO |
+| 06-01-D3 | 06 | Consistent placeholder messaging pattern | Dutch "komt binnenkort" messaging maintains professional tone |
 
 ## Blockers / Concerns
 
@@ -58,9 +61,10 @@ None.
 | 04 | 04-01 | Profiles table with triggers and RLS policies | supabase/migrations/00001_profiles.sql, docs/database-schema.md | ✓ 6/6 |
 | 04 | 04-02 | Authentication flow with login, signup, and email confirmation | app/login/actions.ts, app/login/page.tsx, app/auth/confirm/route.ts, app/auth/signout/route.ts | ✓ 11/11 |
 | 05 | 05-01 | Session-aware header and protected profile page | components/layout/header.tsx, app/profiel/ | ✓ 12/12 |
+| 06 | 06-01 | Complete URL structure with 15 functional routes | app/openclaw/, app/ai-assistenten/, app/qa/, app/blog/, app/kennisbank/ | ✓ 9/9 |
 
 ## Session Continuity
 
-Last session: 2026-02-09T19:03:00Z
-Stopped at: Completed 05-01-PLAN.md (Phase 5 complete)
+Last session: 2026-02-09T20:45:34Z
+Stopped at: Completed 06-01-PLAN.md (Phase 6 complete)
 Resume file: None
