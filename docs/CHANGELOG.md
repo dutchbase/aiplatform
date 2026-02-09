@@ -75,7 +75,60 @@ en dit project volgt [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Geplande wijzigingen
 
-Zie [roadmap/ROADMAP.md](../roadmap/ROADMAP.md) voor volledige planning van Fase 2-25.
+Zie [roadmap/ROADMAP.md](../roadmap/ROADMAP.md) voor volledige planning van Fase 4-25.
+
+---
+
+## [0.4.0] - 2026-02-09
+
+### Fase 3: Supabase-project
+
+**Doel:** Supabase client infrastructuur opzetten voor browser, server en middleware.
+
+#### Toegevoegd
+
+- **Supabase client utilities:**
+  - `lib/supabase/client.ts` - Browser client factory met `createBrowserClient` van `@supabase/ssr`
+  - `lib/supabase/server.ts` - Server client factory met `createServerClient` en `getAll`/`setAll` cookie pattern
+  - Async server client voor Next.js 14+ `cookies()` requirement
+  - Non-null assertions voor fail-fast gedrag bij ontbrekende environment variabelen
+
+- **Next.js middleware voor session refresh:**
+  - `middleware.ts` - Automatische JWT validatie en token refresh via `auth.getUser()`
+  - Cookie propagatie op zowel request als response voor Server Components
+  - Matcher configuratie sluit statische bestanden uit (_next/static, images, favicon)
+  - Geen auth redirects (fase 4+) - enkel session cookie refresh
+
+- **Environment configuratie:**
+  - `.env.example` uitgebreid met beschrijvende comments
+  - `SUPABASE_SERVICE_ROLE_KEY` toegevoegd voor toekomstige admin operaties (Fase 4+)
+  - `NEXT_PUBLIC_BASE_URL` gedocumenteerd voor metadata/canonical URLs
+
+- **Documentatie:**
+  - `docs/supabase-setup.md` - Nederlandstalige setup handleiding met:
+    - Stapsgewijze instructies voor Supabase project aanmaken
+    - API credentials ophalen uit dashboard
+    - Environment variabelen instellen
+    - Verbinding verificatie
+    - Probleemoplossing sectie
+    - Links naar officiële Supabase documentatie
+
+#### Technische details
+
+- **Gebruikte patterns:**
+  - `@supabase/ssr` package (niet deprecated auth-helpers)
+  - `getAll`/`setAll` cookie methods (niet deprecated get/set/remove)
+  - `auth.getUser()` voor JWT validatie (niet insecure `getSession()`)
+  - Async server client voor Next.js 14+ compatibility
+
+- **Security:**
+  - Service role key warning: server-only, nooit in client code
+  - `.env.local` blijft in .gitignore (geen secrets in git)
+  - Non-null assertions dwingen expliciete configuratie
+
+#### Volgende stappen
+
+**Fase 4:** Authenticatie - Supabase Auth integratie met login/logout flows.
 
 ---
 
