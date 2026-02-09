@@ -2,12 +2,12 @@
 
 ## Current Position
 
-Phase: 4 of 25 (Database & Auth)
-Plan: 2 of 2 (in phase)
+Phase: 5 of 25 (Sessie & Profiel)
+Plan: 1 of 1 (in phase)
 Status: Phase complete
-Last activity: 2026-02-09 - Completed 04-02-PLAN.md
+Last activity: 2026-02-09 - Completed 05-01-PLAN.md
 
-Progress: [====------------------------] 16% (4/25 phases)
+Progress: [=====------------------------] 20% (5/25 phases)
 
 ## Accumulated Decisions
 
@@ -38,6 +38,10 @@ Progress: [====------------------------] 16% (4/25 phases)
 | 04-02-D2 | 04 | Single page for login and registration | Simpler UX, both actions share form fields |
 | 04-02-D3 | 04 | PKCE flow via verifyOtp with token_hash | Modern, secure email confirmation pattern required by Supabase |
 | 04-02-D4 | 04 | POST method for signout | Sign out is a state mutation, not a GET-safe operation |
+| 05-01-D1 | 05 | Header as async Server Component with getUser() | No client-side auth state management needed - cleaner, faster, SSR-friendly |
+| 05-01-D2 | 05 | Signout via form POST to existing /auth/signout Route Handler | Reuse Phase 4 infrastructure, progressive enhancement, no JS needed |
+| 05-01-D3 | 05 | useFormState from react-dom (not useActionState from react) | Project uses React 18.3.1 - useActionState is React 19+ only |
+| 05-01-D4 | 05 | defaultValue (not value) for display name input | Uncontrolled input allows editing without onChange handler - simpler for forms with Server Actions |
 
 ## Blockers / Concerns
 
@@ -53,9 +57,10 @@ None.
 | 03 | 03-01 | Supabase client infrastructure with session middleware | lib/supabase/client.ts, lib/supabase/server.ts, middleware.ts | ✓ 10/10 |
 | 04 | 04-01 | Profiles table with triggers and RLS policies | supabase/migrations/00001_profiles.sql, docs/database-schema.md | ✓ 6/6 |
 | 04 | 04-02 | Authentication flow with login, signup, and email confirmation | app/login/actions.ts, app/login/page.tsx, app/auth/confirm/route.ts, app/auth/signout/route.ts | ✓ 11/11 |
+| 05 | 05-01 | Session-aware header and protected profile page | components/layout/header.tsx, app/profiel/ | ✓ 12/12 |
 
 ## Session Continuity
 
-Last session: 2026-02-09T18:37:00Z
-Stopped at: Completed 04-02-PLAN.md (Phase 4 complete)
+Last session: 2026-02-09T19:03:00Z
+Stopped at: Completed 05-01-PLAN.md (Phase 5 complete)
 Resume file: None
