@@ -41,7 +41,13 @@ Plans:
 
 ## Fase 2 – Design & componenten
 
-- [ ] **2 – Design & componenten** — Design tokens, header, footer, basiscomponenten.
+**Goal:** Design tokens (HSL CSS variables), Inter font, Header/Footer layout shell, and reusable Button component via shadcn/ui pattern.
+
+**Plans:** 2 plans
+
+Plans:
+- [ ] 02-01-PLAN.md — Design tokens, Tailwind config, cn() utility, Inter font, Header, Footer, layout shell
+- [ ] 02-02-PLAN.md — Button component, homepage update, changelog
 
 **Document:** [phase-02-design-componenten.md](./phase-02-design-componenten.md)
 
