@@ -150,7 +150,12 @@ Plans:
 
 ## Fase 10 – OpenClaw-tutorials
 
-- [ ] **10 – OpenClaw-tutorials** — Tutorials-overzicht, 3 tutorial-detailpagina's (structuur).
+**Goal:** Een tutorials-overzichtspagina en drie tutorial-detailpagina's (op slug) met een vaste layout; inhoud kan placeholder of kort zijn en wordt in Fase 19 ingevuld.
+
+**Plans:** 1 plan
+
+Plans:
+- [ ] 10-01-PLAN.md — Tutorials data structure, overview page, and dynamic slug-based detail pages
 
 **Document:** [phase-10-openclaw-tutorials.md](./phase-10-openclaw-tutorials.md)
 
