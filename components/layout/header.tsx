@@ -4,8 +4,10 @@ import { createClient } from '@/lib/supabase/server'
 const NAV_ITEMS = [
   { href: '/', label: 'Home' },
   { href: '/openclaw', label: 'OpenClaw' },
-  { href: '/blog', label: 'Blog' },
+  { href: '/ai-assistenten', label: 'AI Assistenten' },
   { href: '/qa', label: 'Q&A' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/kennisbank', label: 'Kennisbank' },
 ] as const
 
 export async function Header() {
