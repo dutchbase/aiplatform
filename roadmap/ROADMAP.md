@@ -123,7 +123,12 @@ Plans:
 
 ## Fase 8 – Sitemap & robots
 
-- [ ] **8 – Sitemap & robots** — `sitemap.xml`, `robots.txt`, canonieke URLs.
+**Goal:** Crawlers kunnen de site correct indexeren: werkende `sitemap.xml` en `robots.txt`; waar relevant canonical URLs om duplicate content te voorkomen.
+
+**Plans:** 1 plan
+
+Plans:
+- [ ] 08-01-PLAN.md — Implement sitemap.ts, robots.ts, and canonical URLs on existing pages
 
 **Document:** [phase-08-sitemap-robots.md](./phase-08-sitemap-robots.md)
 
