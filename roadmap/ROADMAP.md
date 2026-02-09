@@ -46,8 +46,8 @@ Plans:
 **Plans:** 2 plans
 
 Plans:
-- [ ] 02-01-PLAN.md — Design tokens, Tailwind config, cn() utility, Inter font, Header, Footer, layout shell
-- [ ] 02-02-PLAN.md — Button component, homepage update, changelog
+- [x] 02-01-PLAN.md — Design tokens, Tailwind config, cn() utility, Inter font, Header, Footer, layout shell
+- [x] 02-02-PLAN.md — Button component, homepage update, changelog
 
 **Document:** [phase-02-design-componenten.md](./phase-02-design-componenten.md)
 

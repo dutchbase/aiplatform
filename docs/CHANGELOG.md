@@ -79,6 +79,40 @@ Zie [roadmap/ROADMAP.md](../roadmap/ROADMAP.md) voor volledige planning van Fase
 
 ---
 
+## [0.3.0] - 2026-02-09
+
+### Fase 2: Design & componenten
+
+**Doel:** Design tokens, Inter font, Header/Footer layout shell, reusable Button component (shadcn/ui pattern), homepage update met semantic tokens.
+
+#### Toegevoegd
+
+- **Design tokens:** HSL-based CSS custom properties in `globals.css` (light + dark mode)
+- **Tailwind config:** Extended with semantic color tokens, container config (centered, 1400px max), border-radius tokens
+- **Inter font:** Loaded via `next/font/google`, applied globally as `font-sans`
+- **`cn()` utility:** Class merging helper at `lib/utils.ts` (clsx + tailwind-merge)
+- **Header component:** Sticky header with site name and navigation (Home, OpenClaw, Blog, Q&A)
+- **Footer component:** Copyright with dynamic year, placeholder links (Privacy, Gebruiksvoorwaarden)
+- **Button component:** Reusable UI primitive with 6 variants and 4 sizes (shadcn/ui pattern)
+- **Layout shell:** Flex-column structure in root layout with Header, main, Footer
+
+#### Gewijzigd
+
+- `globals.css` - Replaced RGB variables with HSL design token system
+- `tailwind.config.ts` - Extended with semantic colors, container, font, border-radius, animations plugin
+- `app/layout.tsx` - Added Inter font, Header, Footer, flex-column layout
+- `app/page.tsx` - Updated to use Button component and semantic token classes
+
+#### Dependencies
+
+- Added: class-variance-authority, clsx, tailwind-merge, tailwindcss-animate, lucide-react, @radix-ui/react-slot
+
+#### Volgende stappen
+
+**Fase 3:** Supabase-project - Client utilities, session middleware, environment configuration.
+
+---
+
 ## [0.2.0] - 2026-02-09
 
 ### Fase 1: Next.js-appbasis
