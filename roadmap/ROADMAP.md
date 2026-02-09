@@ -1,7 +1,7 @@
 # Roadmap – Nederlandse AI Assistenten Hub
 
-**Bron:** PRD (prd.md) v1.1  
-**Doel:** Stapsgewijze, door AI-agents uitvoerbare bouw van het platform.  
+**Bron:** PRD (prd.md) v1.1
+**Doel:** Stapsgewijze, door AI-agents uitvoerbare bouw van het platform.
 **Conventie:** Elke fase heeft 2–3 kleine taken, een eigen fase-document in `/roadmap/`, en eindigt met commit, changelog, documentatie en push naar GitHub.
 
 ---
@@ -28,7 +28,12 @@ Vink een fase af door `[ ]` te vervangen door `[x]`. Na voltooiing: commit, `doc
 
 ## Fase 1 – Next.js-appbasis
 
-- [ ] **1 – Next.js-appbasis** — App Router, layout, homepagina, basisstyling.
+**Goal:** Next.js-appbasis — App Router, layout, homepagina, basisstyling.
+
+**Plans:** 1 plan
+
+Plans:
+- [ ] 01-01-PLAN.md — Enhance Next.js app basis with comprehensive metadata and Dutch content
 
 **Document:** [phase-01-nextjs-app-basis.md](./phase-01-nextjs-app-basis.md)
 
@@ -100,7 +105,7 @@ Vink een fase af door `[ ]` te vervangen door `[x]`. Na voltooiing: commit, `doc
 
 ## Fase 10 – OpenClaw-tutorials
 
-- [ ] **10 – OpenClaw-tutorials** — Tutorials-overzicht, 3 tutorial-detailpagina’s (structuur).
+- [ ] **10 – OpenClaw-tutorials** — Tutorials-overzicht, 3 tutorial-detailpagina's (structuur).
 
 **Document:** [phase-10-openclaw-tutorials.md](./phase-10-openclaw-tutorials.md)
 
