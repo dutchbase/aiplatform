@@ -55,7 +55,12 @@ Plans:
 
 ## Fase 3 – Supabase-project
 
-- [ ] **3 – Supabase-project** — Supabase-project, env-variabelen, eerste connectie.
+**Goal:** Supabase backend connection -- client utilities (browser + server), environment configuration, and middleware for session refresh.
+
+**Plans:** 1 plan
+
+Plans:
+- [ ] 03-01-PLAN.md — Supabase client utilities, session middleware, env config, and setup docs
 
 **Document:** [phase-03-supabase-project.md](./phase-03-supabase-project.md)
 
