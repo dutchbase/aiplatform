@@ -33,7 +33,7 @@ Vink een fase af door `[ ]` te vervangen door `[x]`. Na voltooiing: commit, `doc
 **Plans:** 1 plan
 
 Plans:
-- [ ] 01-01-PLAN.md — Enhance Next.js app basis with comprehensive metadata and Dutch content
+- [x] 01-01-PLAN.md — Enhance Next.js app basis with comprehensive metadata and Dutch content
 
 **Document:** [phase-01-nextjs-app-basis.md](./phase-01-nextjs-app-basis.md)
 

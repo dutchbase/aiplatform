@@ -75,5 +75,41 @@ en dit project volgt [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Geplande wijzigingen
 
-Zie [roadmap/ROADMAP.md](../roadmap/ROADMAP.md) voor volledige planning van Fase 1-25.
+Zie [roadmap/ROADMAP.md](../roadmap/ROADMAP.md) voor volledige planning van Fase 2-25.
+
+---
+
+## [0.2.0] - 2026-02-09
+
+### Fase 1: Next.js-appbasis
+
+**Doel:** Next.js-appbasis formaliseren met productie-klare metadata, Nederlandse taalconfiguratie en SEO-geoptimaliseerde homepagina.
+
+#### Toegevoegd
+
+- **Uitgebreide metadata in root layout:**
+  - Title template patroon (`%s | AI Assistenten Hub`) voor consistente paginatitels
+  - Keywords array: AI assistenten, OpenClaw, Nederlands, tutorials, Q&A, handleidingen
+  - Authors, creator, publisher velden
+  - metadataBase met `NEXT_PUBLIC_BASE_URL` environment variabele ondersteuning
+  - Canonical URL en taalverwijzingen (`nl-NL`)
+  - Complete Open Graph configuratie met `nl_NL` locale
+  - Twitter card configuratie (`summary_large_image`)
+  - Robots configuratie met googleBot instellingen
+
+- **Verbeterde homepagina:**
+  - Responsief ontwerp met `p-8 md:p-24` en `max-w-3xl` container
+  - Responsieve heading (`text-4xl md:text-5xl`)
+  - Ondertitel met OpenClaw vermelding
+  - Actiegerichte introductietekst (tutorials, vragen, AI-assistenten)
+  - Dark mode tekstkleuren (`dark:text-gray-300/400/500`)
+
+- **Taalconfiguratie:**
+  - `<html lang="nl">` voor Nederlandse taal
+  - `openGraph.locale: 'nl_NL'` voor zoekmachines
+  - `antialiased` class op body voor betere letterweergave
+
+#### Volgende stappen
+
+**Fase 2:** Design & componenten - Design tokens, header, footer, basiscomponenten.
 
