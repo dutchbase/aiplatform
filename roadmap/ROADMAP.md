@@ -82,7 +82,12 @@ Plans:
 
 ## Fase 5 – Sessie & profiel
 
-- [ ] **5 – Sessie & profiel** — Middleware sessie, profielpagina, uitloggen.
+**Goal:** Auth-aware header showing session status and protected profile page with display name editing.
+
+**Plans:** 1 plan
+
+Plans:
+- [ ] 05-01-PLAN.md — Auth-aware header, protected profile page with display name editing, changelog
 
 **Document:** [phase-05-sessie-profiel.md](./phase-05-sessie-profiel.md)
 
