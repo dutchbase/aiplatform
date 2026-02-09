@@ -2,12 +2,12 @@
 
 ## Current Position
 
-Phase: 3 of 25 (Supabase-project)
-Plan: 1 of 1 (in phase)
+Phase: 4 of 25 (Database & Auth)
+Plan: 2 of 2 (in phase)
 Status: Phase complete
-Last activity: 2026-02-09 - Completed 03-01-PLAN.md
+Last activity: 2026-02-09 - Completed 04-02-PLAN.md
 
-Progress: [===------------------------] 12% (3/25 phases)
+Progress: [====------------------------] 16% (4/25 phases)
 
 ## Accumulated Decisions
 
@@ -30,6 +30,10 @@ Progress: [===------------------------] 12% (3/25 phases)
 | 03-01-D5 | 03 | No auth redirects in middleware yet | Authentication is Phase 4+, middleware only refreshes sessions |
 | 03-01-D6 | 03 | Async server client factory | Next.js 14+ cookies() is async |
 | 03-01-D7 | 03 | Cookie propagation on both request and response | Ensures Server Components and browser both see updated cookies |
+| 04-01-D1 | 04 | CHECK constraint instead of PostgreSQL ENUM for role | Easier to modify roles later without complex migrations |
+| 04-01-D2 | 04 | Use (select auth.uid()) in RLS policies | Caches result per-statement (not per-row), 20x performance improvement |
+| 04-01-D3 | 04 | security definer set search_path = '' on triggers | Bypasses RLS while preventing search_path injection attacks |
+| 04-01-D4 | 04 | No INSERT or DELETE RLS policies on profiles | Only trigger inserts, only cascade deletes - simpler security model |
 
 ## Blockers / Concerns
 
@@ -43,9 +47,10 @@ None.
 | 02 | 02-01 | HSL design tokens, Inter font, Header/Footer | app/globals.css, tailwind.config.ts, components/layout/ | ✓ 8/8 |
 | 02 | 02-02 | Button component with 6 variants, homepage update | components/ui/button.tsx, app/page.tsx | ✓ 6/6 |
 | 03 | 03-01 | Supabase client infrastructure with session middleware | lib/supabase/client.ts, lib/supabase/server.ts, middleware.ts | ✓ 10/10 |
+| 04 | 04-01 | Profiles table with triggers and RLS policies | supabase/migrations/00001_profiles.sql, docs/database-schema.md | ✓ 6/6 |
 
 ## Session Continuity
 
-Last session: 2026-02-09T17:49:35Z
-Stopped at: Completed 03-01-PLAN.md (Phase 3 complete)
+Last session: 2026-02-09T18:33:03Z
+Stopped at: Completed 04-01-PLAN.md
 Resume file: None
