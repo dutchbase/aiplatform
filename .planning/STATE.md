@@ -34,6 +34,10 @@ Progress: [====------------------------] 16% (4/25 phases)
 | 04-01-D2 | 04 | Use (select auth.uid()) in RLS policies | Caches result per-statement (not per-row), 20x performance improvement |
 | 04-01-D3 | 04 | security definer set search_path = '' on triggers | Bypasses RLS while preventing search_path injection attacks |
 | 04-01-D4 | 04 | No INSERT or DELETE RLS policies on profiles | Only trigger inserts, only cascade deletes - simpler security model |
+| 04-02-D1 | 04 | formAction pattern without 'use client' | Progressive enhancement, no client JS needed for basic auth flow |
+| 04-02-D2 | 04 | Single page for login and registration | Simpler UX, both actions share form fields |
+| 04-02-D3 | 04 | PKCE flow via verifyOtp with token_hash | Modern, secure email confirmation pattern required by Supabase |
+| 04-02-D4 | 04 | POST method for signout | Sign out is a state mutation, not a GET-safe operation |
 
 ## Blockers / Concerns
 
@@ -48,9 +52,10 @@ None.
 | 02 | 02-02 | Button component with 6 variants, homepage update | components/ui/button.tsx, app/page.tsx | ✓ 6/6 |
 | 03 | 03-01 | Supabase client infrastructure with session middleware | lib/supabase/client.ts, lib/supabase/server.ts, middleware.ts | ✓ 10/10 |
 | 04 | 04-01 | Profiles table with triggers and RLS policies | supabase/migrations/00001_profiles.sql, docs/database-schema.md | ✓ 6/6 |
+| 04 | 04-02 | Authentication flow with login, signup, and email confirmation | app/login/actions.ts, app/login/page.tsx, app/auth/confirm/route.ts, app/auth/signout/route.ts | ✓ 11/11 |
 
 ## Session Continuity
 
-Last session: 2026-02-09T18:33:03Z
-Stopped at: Completed 04-01-PLAN.md
+Last session: 2026-02-09T18:37:00Z
+Stopped at: Completed 04-02-PLAN.md (Phase 4 complete)
 Resume file: None
