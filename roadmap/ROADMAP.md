@@ -87,7 +87,7 @@ Plans:
 **Plans:** 1 plan
 
 Plans:
-- [ ] 05-01-PLAN.md — Auth-aware header, protected profile page with display name editing, changelog
+- [x] 05-01-PLAN.md — Auth-aware header, protected profile page with display name editing, changelog
 
 **Document:** [phase-05-sessie-profiel.md](./phase-05-sessie-profiel.md)
 
