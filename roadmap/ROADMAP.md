@@ -109,7 +109,13 @@ Plans:
 
 ## Fase 7 – SEO-basis
 
-- [ ] **7 – SEO-basis** — Meta titles/descriptions, Open Graph, per paginatype.
+**Goal:** Elke paginatype heeft een duidelijke meta title en description; Open Graph-basis voor delen. Geen dubbele titels; standaard waarden waar nodig.
+
+**Plans:** 2 plans
+
+Plans:
+- [ ] 07-01-PLAN.md — Add metadata to all 15 route pages (static and dynamic)
+- [ ] 07-02-PLAN.md — Create SEO documentation and update changelog
 
 **Document:** [phase-07-seo-basis.md](./phase-07-seo-basis.md)
 
