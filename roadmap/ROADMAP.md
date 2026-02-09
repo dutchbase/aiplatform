@@ -68,7 +68,13 @@ Plans:
 
 ## Fase 4 – Database & auth
 
-- [ ] **4 – Database & auth** — Schema users/roles, Supabase Auth, registratie en login.
+**Goal:** Database schema for user profiles with RLS, Supabase Auth flows (registration, login, logout), and email confirmation callback.
+
+**Plans:** 2 plans
+
+Plans:
+- [ ] 04-01-PLAN.md — SQL migration for profiles table, triggers, RLS policies, and schema docs
+- [ ] 04-02-PLAN.md — Auth flows: login page, Server Actions, email confirm route, signout route
 
 **Document:** [phase-04-database-auth.md](./phase-04-database-auth.md)
 
