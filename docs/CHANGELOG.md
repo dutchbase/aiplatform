@@ -75,7 +75,41 @@ en dit project volgt [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Geplande wijzigingen
 
-Zie [roadmap/ROADMAP.md](../roadmap/ROADMAP.md) voor volledige planning van Fase 4-25.
+Zie [roadmap/ROADMAP.md](../roadmap/ROADMAP.md) voor volledige planning van Fase 5-25.
+
+---
+
+## [0.5.0] - 2026-02-09
+
+### Fase 4: Database & Auth
+
+**Doel:** Implementeer volledige authenticatie flow met login, registratie, e-mailbevestiging en uitloggen.
+
+#### Toegevoegd
+
+- **`profiles` tabel met kolommen:** id, display_name, role, created_at, updated_at
+- **Database trigger `handle_new_user`** voor automatische profielaanmaak bij registratie
+- **Database trigger `update_profiles_updated_at`** voor automatische updated_at
+- **Row Level Security (RLS) policies** op profiles tabel
+- **Inlogpagina (`/login`)** met registratie- en inlogformulier
+- **Server Actions** voor login (`signInWithPassword`) en registratie (`signUp`)
+- **E-mailbevestiging callback route (`/auth/confirm`)** voor PKCE flow
+- **Uitlog route handler (`/auth/signout`)** via POST
+- **Database schema documentatie** (`docs/database-schema.md`)
+
+#### Technische details
+
+- **Rollen via CHECK constraint:** user, moderator, admin
+- **RLS policies:** authenticated SELECT, self UPDATE, admin UPDATE
+- **Server Actions gebruiken `@supabase/ssr`** (niet deprecated auth-helpers)
+- **`auth.getUser()` gebruikt** (niet onveilige `getSession()`)
+- **PKCE flow:** Email confirmation met token_hash exchange via verifyOtp
+- **formAction pattern:** Progressive enhancement zonder 'use client'
+- **Dutch UI:** Volledige Nederlandse interface (Inloggen, Registreren, Weergavenaam, etc.)
+
+#### Volgende stappen
+
+**Fase 5:** Protected routes en user session management.
 
 ---
 
