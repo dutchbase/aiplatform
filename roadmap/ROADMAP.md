@@ -136,7 +136,13 @@ Plans:
 
 ## Fase 9 – OpenClaw-sectie
 
-- [ ] **9 – OpenClaw-sectie** — Overzichtspagina, installatiepagina, navigatie.
+**Goal:** De OpenClaw-sectie is herkenbaar en bruikbaar: overzichtspagina met uitleg en links naar installatie, tutorials, use-cases en nieuws; installatiepagina met echte inhoudsstructuur.
+
+**Plans:** 2 plans
+
+Plans:
+- [ ] 09-01-PLAN.md — OpenClaw overview and installation pages with Dutch content and structure
+- [ ] 09-02-PLAN.md — OpenClaw subnavigation component and header integration
 
 **Document:** [phase-09-openclaw-sectie.md](./phase-09-openclaw-sectie.md)
 
