@@ -95,7 +95,13 @@ Plans:
 
 ## Fase 6 – URL-structuur & routing
 
-- [ ] **6 – URL-structuur & routing** — Alle routes uit PRD (openclaw, blog, qa, kennisbank, ai-assistenten).
+**Goal:** Alle routes uit de PRD (Appendix A) bestaan als pagina's of placeholders, zodat navigatie en SEO-structuur kloppen en er later alleen inhoud hoeft te worden toegevoegd.
+
+**Plans:** 2 plans
+
+Plans:
+- [ ] 06-01-PLAN.md — Create all route placeholders (OpenClaw, AI assistants, Q&A, blog, kennisbank)
+- [ ] 06-02-PLAN.md — Update Header navigation with links to all sections
 
 **Document:** [phase-06-url-structuur-routing.md](./phase-06-url-structuur-routing.md)
 
