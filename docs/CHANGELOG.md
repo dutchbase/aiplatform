@@ -7,6 +7,33 @@ en dit project volgt [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
+## [0.6.0] - 2026-02-09
+
+### Fase 5 - Sessie & Profiel
+
+**Doel:** Maak de bestaande header sessie-bewust en creëer een beschermde profielpagina waar gebruikers hun weergavenaam kunnen bekijken en bewerken.
+
+#### Toegevoegd
+
+- Header toont nu auth-status: inloggen/registreren voor bezoekers, profiel/uitloggen voor ingelogde gebruikers
+- Profielpagina (`/profiel`) met e-mailadres en weergavenaam
+- Profiel bewerken: weergavenaam wijzigen via Server Action met formulier feedback
+- Beschermde route: /profiel redirect naar /login als gebruiker niet is ingelogd
+
+#### Technische details
+
+- Header is async Server Component met `getUser()` (geen client-side auth state)
+- Uitloggen via form POST naar bestaande `/auth/signout` Route Handler
+- `useFormState` uit `react-dom` voor formulier feedback (React 18.3.1 patroon)
+- Profielupdate via Supabase `.update()` met RLS-autorisatie
+- `revalidatePath('/profiel')` voor cache-invalidatie na update
+
+#### Volgende stappen
+
+**Fase 6:** URL-structuur en routing opzetten voor OpenClaw sectie.
+
+---
+
 ## [0.1.0] - 2026-02-09
 
 ### Fase 0: Projectsetup
