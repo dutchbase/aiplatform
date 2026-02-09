@@ -60,7 +60,7 @@ Plans:
 **Plans:** 1 plan
 
 Plans:
-- [ ] 03-01-PLAN.md — Supabase client utilities, session middleware, env config, and setup docs
+- [x] 03-01-PLAN.md — Supabase client utilities, session middleware, env config, and setup docs
 
 **Document:** [phase-03-supabase-project.md](./phase-03-supabase-project.md)
 
