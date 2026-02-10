@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { OpenClawNav } from '@/components/openclaw/openclaw-nav'
 import { tutorials } from '@/lib/data/tutorials'
+import { Breadcrumbs } from '@/components/ui/breadcrumbs'
 
 export const metadata: Metadata = {
   title: 'OpenClaw Tutorials – Leer OpenClaw Gebruiken | AI Assistenten Hub',
@@ -23,6 +24,10 @@ export default function OpenClawTutorialsPage() {
   return (
     <div className="container py-12">
       <div className="max-w-5xl mx-auto">
+        <Breadcrumbs items={[
+          { label: 'OpenClaw', href: '/openclaw' },
+          { label: 'Tutorials' },
+        ]} />
         {/* Page header */}
         <div className="mb-8">
           <h1 className="text-4xl font-bold mb-4">OpenClaw Tutorials</h1>

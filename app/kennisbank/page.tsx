@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Breadcrumbs } from '@/components/ui/breadcrumbs'
 
 export const metadata: Metadata = {
   title: 'Kennisbank',
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
 export default function KennisbankPage() {
   return (
     <div className="container mx-auto px-4 py-8">
+      <Breadcrumbs items={[{ label: 'Kennisbank' }]} />
       <h1 className="text-4xl font-bold mb-6 text-foreground">Kennisbank</h1>
       <p className="text-lg text-muted-foreground">
         Welkom bij onze kennisbank. Hier vindt u binnenkort uitgebreide

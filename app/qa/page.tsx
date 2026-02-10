@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { getQuestions } from '@/lib/qa/queries'
+import { Breadcrumbs } from '@/components/ui/breadcrumbs'
 
 export const metadata: Metadata = {
   title: 'Q&A',
@@ -13,6 +14,7 @@ export default async function QAPage() {
 
   return (
     <div className="container mx-auto px-4 py-8">
+      <Breadcrumbs items={[{ label: 'Q&A' }]} />
       <h1 className="text-4xl font-bold mb-6 text-foreground">Q&A</h1>
       <p className="text-lg text-muted-foreground mb-8">
         Welkom bij onze Q&A community. Stel vragen, deel kennis en help elkaar met AI-assistenten.

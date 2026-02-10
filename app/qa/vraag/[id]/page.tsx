@@ -5,6 +5,7 @@ import { createClient } from '@/lib/supabase/server'
 import { getQuestionById, getAnswersByQuestionId, getRepliesByAnswerId } from '@/lib/qa/queries'
 import { AnswerForm } from '@/components/qa/answer-form'
 import { ReplyForm } from '@/components/qa/reply-form'
+import { Breadcrumbs } from '@/components/ui/breadcrumbs'
 
 type Props = { params: Promise<{ id: string }> }
 
@@ -42,6 +43,10 @@ export default async function QAVraagPage({ params }: Props) {
 
   return (
     <div className="container mx-auto px-4 py-8">
+      <Breadcrumbs items={[
+        { label: 'Q&A', href: '/qa' },
+        { label: question.title },
+      ]} />
       {/* Question */}
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4 text-foreground">{question.title}</h1>

@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { redirect } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import { getBlogPost, blogPosts } from '@/lib/data/blog'
+import { Breadcrumbs } from '@/components/ui/breadcrumbs'
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -50,20 +51,10 @@ export default async function BlogPostPage({ params }: Props) {
   return (
     <div className="container py-12">
       <div className="max-w-3xl mx-auto space-y-12">
-        {/* Breadcrumb */}
-        <nav aria-label="Kruimelpad" className="text-sm text-muted-foreground">
-          <ol className="flex items-center gap-2">
-            <li>
-              <Link href="/blog" className="hover:text-foreground transition-colors">
-                Blog
-              </Link>
-            </li>
-            <li aria-hidden="true">/</li>
-            <li className="text-foreground font-medium" aria-current="page">
-              {post.title}
-            </li>
-          </ol>
-        </nav>
+        <Breadcrumbs items={[
+          { label: 'Blog', href: '/blog' },
+          { label: post.title },
+        ]} />
 
         {/* Article header */}
         <div>

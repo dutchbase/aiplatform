@@ -4,6 +4,7 @@ import { redirect } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import { OpenClawNav } from '@/components/openclaw/openclaw-nav'
 import { tutorials } from '@/lib/data/tutorials'
+import { Breadcrumbs } from '@/components/ui/breadcrumbs'
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -51,26 +52,11 @@ export default async function TutorialPage({ params }: Props) {
   return (
     <div className="container py-12">
       <div className="max-w-3xl mx-auto space-y-12">
-        {/* Breadcrumb */}
-        <nav aria-label="Kruimelpad" className="text-sm text-muted-foreground">
-          <ol className="flex items-center gap-2">
-            <li>
-              <Link href="/openclaw" className="hover:text-foreground transition-colors">
-                OpenClaw
-              </Link>
-            </li>
-            <li aria-hidden="true">/</li>
-            <li>
-              <Link href="/openclaw/tutorials" className="hover:text-foreground transition-colors">
-                Tutorials
-              </Link>
-            </li>
-            <li aria-hidden="true">/</li>
-            <li className="text-foreground font-medium" aria-current="page">
-              {tutorial.title}
-            </li>
-          </ol>
-        </nav>
+        <Breadcrumbs items={[
+          { label: 'OpenClaw', href: '/openclaw' },
+          { label: 'Tutorials', href: '/openclaw/tutorials' },
+          { label: tutorial.title },
+        ]} />
 
         {/* Tutorial header */}
         <div>

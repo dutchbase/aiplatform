@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { OpenClawNav } from '@/components/openclaw/openclaw-nav'
+import { Breadcrumbs } from '@/components/ui/breadcrumbs'
 
 export const metadata: Metadata = {
   title: 'OpenClaw Installatie – Stap voor Stap | AI Assistenten Hub',
@@ -13,6 +14,10 @@ export default function OpenClawInstallatiePage() {
   return (
     <div className="container py-12">
       <div className="max-w-3xl mx-auto space-y-12">
+        <Breadcrumbs items={[
+          { label: 'OpenClaw', href: '/openclaw' },
+          { label: 'Installatie' },
+        ]} />
         {/* Page header */}
         <div>
           <h1 className="text-4xl font-bold mb-4">OpenClaw Installatie</h1>

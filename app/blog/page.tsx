@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { blogPosts } from '@/lib/data/blog'
+import { Breadcrumbs } from '@/components/ui/breadcrumbs'
 
 export const metadata: Metadata = {
   title: 'Blog',
@@ -22,6 +23,7 @@ export default function BlogPage() {
   return (
     <div className="container py-12">
       <div className="max-w-5xl mx-auto">
+        <Breadcrumbs items={[{ label: 'Blog' }]} />
         {/* Page header */}
         <div className="mb-8">
           <h1 className="text-4xl font-bold mb-4">Blog</h1>
