@@ -168,7 +168,7 @@ Plans:
 **Plans:** 1 plan
 
 Plans:
-- [ ] 11-01-PLAN.md — Blog data module, overview page, detail page with generateMetadata and redirect
+- [x] 11-01-PLAN.md — Blog data module, overview page, detail page with generateMetadata and redirect
 
 **Document:** [phase-11-blog-nieuws.md](./phase-11-blog-nieuws.md)
 
@@ -176,7 +176,12 @@ Plans:
 
 ## Fase 12 – RSS-feed
 
-- [ ] **12 – RSS-feed** — Minimaal één RSS-feed (alle content of per sectie).
+**Goal:** RSS 2.0 feed beschikbaar via /feed.xml met blog items; alternate link in HTML head voor discoverability.
+
+**Plans:** 1 plan
+
+Plans:
+- [ ] 12-01-PLAN.md — RSS route handler, feed content from blog data, alternate link in layout
 
 **Document:** [phase-12-rss-feed.md](./phase-12-rss-feed.md)
 
@@ -197,7 +202,12 @@ Plans:
 
 ## Fase 14 – Q&A-API
 
-- [ ] **14 – Q&A-API** — Server actions / API: vraag stellen, antwoord posten, reactie.
+**Goal:** Geauthenticeerde Server Actions voor createQuestion, createAnswer, createReply; read-functies voor overzicht en detail; TypeScript types; documentatie.
+
+**Plans:** 1 plan
+
+Plans:
+- [ ] 14-01-PLAN.md — TypeScript types, read queries, Server Actions voor Q&A mutaties, docs
 
 **Document:** [phase-14-qa-api.md](./phase-14-qa-api.md)
 
@@ -205,7 +215,12 @@ Plans:
 
 ## Fase 15 – Q&A-frontend
 
-- [ ] **15 – Q&A-frontend** — Q&A-overzicht, vraag-detail met antwoorden en reacties.
+**Goal:** Q&A-overzichtspagina en vraag-detailpagina (vraag + antwoorden + reacties) als Server Components; lege staat en 404 correct afgehandeld.
+
+**Plans:** 1 plan
+
+Plans:
+- [ ] 15-01-PLAN.md — Q&A overview page, question detail page with answers and replies hierarchy
 
 **Document:** [phase-15-qa-frontend.md](./phase-15-qa-frontend.md)
 
