@@ -32,6 +32,9 @@ export const metadata: Metadata = {
     languages: {
       'nl-NL': '/',
     },
+    types: {
+      'application/rss+xml': `${process.env.NEXT_PUBLIC_BASE_URL || 'https://aiassistentenhub.nl'}/feed.xml`,
+    },
   },
   openGraph: {
     type: 'website',

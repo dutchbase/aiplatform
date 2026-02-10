@@ -7,6 +7,22 @@ en dit project volgt [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
+## [Phase 12] - 2026-02-10 - RSS Feed
+
+### Added
+- **RSS 2.0 feed** at `/feed.xml` with blog posts sorted newest-first (max 20 items)
+- **RSS alternate link** in root layout metadata — discoverable in HTML `<head>` on all pages
+- **RSS documentation** in `docs/rss.md`
+
+### Technical Details
+- Route Handler: `app/feed.xml/route.ts` returns `application/rss+xml; charset=utf-8`
+- Data source: `lib/data/blog.ts` (static array, same as blog pages)
+- XML escaping for `&`, `<`, `>`, `"`, `'` in title and description fields
+- `atom:link` self-reference for feed validator compliance
+- Base URL from `NEXT_PUBLIC_BASE_URL` env var (falls back to production domain)
+
+---
+
 ## [Phase 11] - 2026-02-10 - Blog & Nieuws
 
 ### Added
