@@ -2,12 +2,12 @@
 
 ## Current Position
 
-Phase: 17 of 25 (Breadcrumbs & 404) - COMPLETE (next: Phase 18)
+Phase: 18 of 25 (Structured Data) - COMPLETE (next: Phase 19)
 Plan: 1 of 1 (in phase)
-Status: Phase 17 complete; Phases 18-20 planned, ready for execution
-Last activity: 2026-02-10 - Completed 17-01-PLAN.md (Breadcrumbs component + 404 page)
+Status: Phase 18 complete; Phases 19-20 planned, ready for execution
+Last activity: 2026-02-10 - Completed 18-01-PLAN.md (Article JSON-LD on blog/tutorials + QAPage JSON-LD on Q&A)
 
-Progress: [=================------------] 72% (18/25 phases complete)
+Progress: [==================-----------] 76% (19/25 phases complete)
 
 ## Accumulated Decisions
 
@@ -77,6 +77,11 @@ Progress: [=================------------] 72% (18/25 phases complete)
 | 17-01-D1 | 17 | Section-relative breadcrumbs (no Home crumb) per PRD 4.4 style | Concise crumbs; Home always accessible via header nav |
 | 17-01-D2 | 17 | › separator with aria-hidden on all breadcrumbs | Screen reader friendly; consistent visual separator |
 | 17-01-D3 | 17 | Named exports only on Breadcrumbs component (no default export) | Both Breadcrumbs and BreadcrumbItem importable together |
+| 18-01-D1 | 18 | Author uses @type Organization with name 'AI Assistenten Hub' | No individual author fields on BlogPost or Tutorial types; Organization is accurate for a platform |
+| 18-01-D2 | 18 | Tutorial uses tutorial.lastUpdated for both datePublished and dateModified | Tutorial type has only lastUpdated (no publishedAt/updatedAt) |
+| 18-01-D3 | 18 | Blog dateModified uses updatedAt ?? publishedAt | updatedAt is optional on BlogPost; fallback ensures dateModified always present |
+| 18-01-D4 | 18 | QAPage suggestedAnswer emits empty array when no answers | Valid Schema.org: answerCount: 0, suggestedAnswer: []; no conditional omission of script tag |
+| 18-01-D5 | 18 | JSON-LD script tag as first Fragment child, never in shared layouts | Prevents duplicate JSON-LD blocks; each page controls its own structured data exactly once |
 
 ## Blockers / Concerns
 
@@ -108,9 +113,10 @@ None.
 | 15 | 15-01 | Q&A frontend: overview page with question list, detail page with answer/reply hierarchy, profiles JOIN | app/qa/page.tsx, app/qa/vraag/[id]/page.tsx, lib/qa/queries.ts, lib/qa/types.ts | ✓ 3/3 |
 | 16 | 16-01 | Q&A write forms: ask-question page, AskQuestionForm, AnswerForm, ReplyForm with auth gates | app/qa/nieuwe-vraag/page.tsx, components/qa/ask-question-form.tsx, components/qa/answer-form.tsx, components/qa/reply-form.tsx | ✓ 3/3 |
 | 17 | 17-01 | Breadcrumbs component + 404 not-found page integrated on 10 sub-pages | components/ui/breadcrumbs.tsx, app/not-found.tsx, 10 page files, docs/seo.md, docs/CHANGELOG.md | ✓ 3/3 |
+| 18 | 18-01 | Schema.org JSON-LD on blog detail (Article), tutorial detail (Article), and Q&A detail (QAPage) pages | app/blog/[slug]/page.tsx, app/openclaw/tutorials/[slug]/page.tsx, app/qa/vraag/[id]/page.tsx, docs/seo.md, docs/CHANGELOG.md | ✓ 3/3 |
 
 ## Session Continuity
 
-Last session: 2026-02-10T19:00:05Z
-Stopped at: Completed 17-01-PLAN.md (Breadcrumbs component + 404 not-found page on 10 sub-pages)
+Last session: 2026-02-10T19:18:00Z
+Stopped at: Completed 18-01-PLAN.md (Article JSON-LD on blog/tutorials + QAPage JSON-LD on Q&A detail)
 Resume file: None
