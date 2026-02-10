@@ -257,7 +257,7 @@ Plans:
 
 ## Fase 19 – Eerste content
 
-- [ ] **19 – Eerste content** — Installatietekst + 3 tutorials inhoudelijk invullen (Nederlands).
+- [x] **19 – Eerste content** — Installatietekst + 3 tutorials inhoudelijk invullen (Nederlands). ✓ 2026-02-10
 
 **Document:** [phase-19-eerste-content.md](./phase-19-eerste-content.md)
 
