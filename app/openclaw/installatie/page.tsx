@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'OpenClaw Installatie',
   description:
-    'Stap-voor-stap handleiding voor het installeren van OpenClaw',
+    'Stap-voor-stap handleiding voor het installeren en configureren van OpenClaw op jouw systeem.',
 }
 
 export default function OpenClawInstallatiePage() {

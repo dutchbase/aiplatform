@@ -2,7 +2,8 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'OpenClaw Nieuws',
-  description: 'Laatste nieuws en updates over OpenClaw',
+  description:
+    'Laatste nieuws, updates en ontwikkelingen rond OpenClaw en AI-assistenten.',
 }
 
 export default function OpenClawNieuwsPage() {

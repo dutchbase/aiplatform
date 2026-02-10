@@ -2,7 +2,8 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'OpenClaw',
-  description: 'Alles over OpenClaw - de Nederlandse AI-assistent voor developers',
+  description:
+    'Alles over OpenClaw - de Nederlandse AI-assistent voor developers. Tutorials, handleidingen en praktische voorbeelden.',
 }
 
 export default function OpenClawPage() {

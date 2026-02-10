@@ -6,9 +6,10 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
+
   return {
     title: `OpenClaw Tutorial: ${slug}`,
-    description: `Leer over ${slug} met deze praktische OpenClaw tutorial`,
+    description: `Leer hoe je ${slug} gebruikt met OpenClaw in deze praktische tutorial.`,
   }
 }
 

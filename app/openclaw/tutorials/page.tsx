@@ -2,7 +2,8 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'OpenClaw Tutorials',
-  description: 'Leer OpenClaw gebruiken met praktische tutorials',
+  description:
+    'Leer OpenClaw gebruiken met praktische tutorials en voorbeelden voor veelvoorkomende use cases.',
 }
 
 export default function OpenClawTutorialsPage() {
