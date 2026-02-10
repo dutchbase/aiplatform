@@ -41,8 +41,31 @@ export default async function QAVraagPage({ params }: Props) {
     }))
   )
 
+  const qaSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'QAPage',
+    mainEntity: {
+      '@type': 'Question',
+      name: question.title,
+      text: question.body,
+      answerCount: answersWithReplies.length,
+      dateCreated: question.created_at,
+      suggestedAnswer: answersWithReplies.map((answer) => ({
+        '@type': 'Answer',
+        text: answer.body,
+        dateCreated: answer.created_at,
+        url: `${process.env.NEXT_PUBLIC_BASE_URL ?? 'http://localhost:3000'}/qa/vraag/${question.id}`,
+      })),
+    },
+  }
+
   return (
-    <div className="container mx-auto px-4 py-8">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(qaSchema) }}
+      />
+      <div className="container mx-auto px-4 py-8">
       <Breadcrumbs items={[
         { label: 'Q&A', href: '/qa' },
         { label: question.title },
@@ -127,5 +150,6 @@ export default async function QAVraagPage({ params }: Props) {
         )}
       </div>
     </div>
+    </>
   )
 }
