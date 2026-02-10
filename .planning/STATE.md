@@ -2,12 +2,12 @@
 
 ## Current Position
 
-Phase: 6 of 25 (URL Structuur & Routing)
-Plan: 2 of 2 (in phase)
-Status: Phase complete
-Last activity: 2026-02-09 - Completed 06-02-PLAN.md
+Phase: 7 of 25 (SEO Basis)
+Plan: 1 of 2 (in phase)
+Status: In progress
+Last activity: 2026-02-10 - Completed 07-01-PLAN.md
 
-Progress: [======-----------------------] 24% (6/25 phases)
+Progress: [=======----------------------] 28% (7/25 phases)
 
 ## Accumulated Decisions
 
@@ -46,6 +46,8 @@ Progress: [======-----------------------] 24% (6/25 phases)
 | 06-01-D2 | 06 | Server Components for all routes | Static content pages don't need client-side JavaScript - better performance and SEO |
 | 06-01-D3 | 06 | Consistent placeholder messaging pattern | Dutch "komt binnenkort" messaging maintains professional tone |
 | 06-02-D1 | 06 | Navigation order prioritizes OpenClaw then broader categories | OpenClaw primary focus per PRD, followed by broader categories (AI Assistenten, Q&A, Blog, Kennisbank) |
+| 07-01-D1 | 07 | No openGraph on child pages - inherited from root layout | Avoids duplication and potential conflicts, root layout openGraph applies automatically |
+| 07-01-D2 | 07 | Blog slug title capitalization: split/capitalize pattern | Produces readable titles (e.g. "Mijn Blog Artikel") from URL slugs ("mijn-blog-artikel") |
 
 ## Blockers / Concerns
 
@@ -64,9 +66,10 @@ None.
 | 05 | 05-01 | Session-aware header and protected profile page | components/layout/header.tsx, app/profiel/ | ✓ 12/12 |
 | 06 | 06-01 | Complete URL structure with 15 functional routes | app/openclaw/, app/ai-assistenten/, app/qa/, app/blog/, app/kennisbank/ | ✓ 9/9 |
 | 06 | 06-02 | Header navigation with complete site structure | components/layout/header.tsx | ✓ 9/9 |
+| 07 | 07-01 | SEO metadata on all 15 route pages with unique Dutch titles and descriptions | app/openclaw/, app/ai-assistenten/, app/qa/, app/blog/, app/kennisbank/ | ✓ 10/10 |
 
 ## Session Continuity
 
-Last session: 2026-02-09T20:41:56Z
-Stopped at: Completed 06-02-PLAN.md (Phase 6 complete)
+Last session: 2026-02-10T07:03:01Z
+Stopped at: Completed 07-01-PLAN.md (Phase 7 plan 1 of 2)
 Resume file: None
