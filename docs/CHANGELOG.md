@@ -7,6 +7,17 @@ en dit project volgt [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
+## Phase 13 — Q&A Datamodel (2026-02-10)
+
+### Toegevoegd
+- `supabase/migrations/00002_qa_schema.sql`: Q&A database schema met questions, answers, en answer_replies tabellen
+- RLS policies op alle drie tabellen: publiek leesbaar, authenticated users kunnen schrijven, eigen rijen bijwerken/verwijderen
+- Updated_at triggers voor alle drie Q&A-tabellen
+- 8 performance indexes voor efficiënte queries (question_id, answer_id, user_id, created_at)
+- `docs/database-schema.md`: uitgebreid met Q&A tabel documentatie, RLS policies, en indexen overzicht
+
+---
+
 ## [Phase 12] - 2026-02-10 - RSS Feed
 
 ### Added

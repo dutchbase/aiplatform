@@ -92,11 +92,86 @@ De database migratie wordt handmatig uitgevoerd in de Supabase Dashboard:
 
 ---
 
+---
+
+## Q&A Tabellen
+
+Aangemaakt in Phase 13. Ondersteunt de Q&A-functionaliteit van het platform.
+
+### `questions` tabel
+
+| Kolom | Type | Nullable | Default | Beschrijving |
+|-------|------|----------|---------|--------------|
+| `id` | `uuid` | NOT NULL | `gen_random_uuid()` | Primary key |
+| `user_id` | `uuid` | NOT NULL | - | Foreign key naar `auth.users(id)`, cascade delete |
+| `title` | `text` | NOT NULL | - | Titel van de vraag |
+| `body` | `text` | NOT NULL | - | Inhoud van de vraag (Markdown) |
+| `created_at` | `timestamptz` | NOT NULL | `now()` | Aanmaakdatum |
+| `updated_at` | `timestamptz` | NOT NULL | `now()` | Datum laatste wijziging |
+
+### `answers` tabel
+
+| Kolom | Type | Nullable | Default | Beschrijving |
+|-------|------|----------|---------|--------------|
+| `id` | `uuid` | NOT NULL | `gen_random_uuid()` | Primary key |
+| `question_id` | `uuid` | NOT NULL | - | Foreign key naar `public.questions(id)`, cascade delete |
+| `user_id` | `uuid` | NOT NULL | - | Foreign key naar `auth.users(id)`, cascade delete |
+| `body` | `text` | NOT NULL | - | Inhoud van het antwoord (Markdown) |
+| `created_at` | `timestamptz` | NOT NULL | `now()` | Aanmaakdatum |
+| `updated_at` | `timestamptz` | NOT NULL | `now()` | Datum laatste wijziging |
+
+### `answer_replies` tabel
+
+| Kolom | Type | Nullable | Default | Beschrijving |
+|-------|------|----------|---------|--------------|
+| `id` | `uuid` | NOT NULL | `gen_random_uuid()` | Primary key |
+| `answer_id` | `uuid` | NOT NULL | - | Foreign key naar `public.answers(id)`, cascade delete |
+| `user_id` | `uuid` | NOT NULL | - | Foreign key naar `auth.users(id)`, cascade delete |
+| `body` | `text` | NOT NULL | - | Inhoud van de reactie (Markdown) |
+| `created_at` | `timestamptz` | NOT NULL | `now()` | Aanmaakdatum |
+| `updated_at` | `timestamptz` | NOT NULL | `now()` | Datum laatste wijziging |
+
+**Cascade deletes:**
+- Als een `question` verwijderd wordt, worden alle bijbehorende `answers` automatisch verwijderd.
+- Als een `answer` verwijderd wordt, worden alle bijbehorende `answer_replies` automatisch verwijderd.
+- Als een gebruiker uit `auth.users` verwijderd wordt, worden alle Q&A-bijdragen van die gebruiker verwijderd.
+
+---
+
+## Q&A RLS Policies
+
+Alle drie Q&A-tabellen volgen hetzelfde RLS-patroon:
+
+| Policy | Operatie | Rol | Voorwaarde | Beschrijving |
+|--------|----------|-----|------------|--------------|
+| **[Tabel] are publicly readable** | SELECT | `public` | `true` | Anonieme bezoekers kunnen alle Q&A-content lezen |
+| **Authenticated users can insert [tabel]** | INSERT | `authenticated` | `user_id = (select auth.uid())` | Ingelogde gebruikers kunnen posten |
+| **Users can update their own [tabel]** | UPDATE | `authenticated` | `user_id = (select auth.uid())` | Gebruikers kunnen alleen eigen rijen wijzigen |
+| **Users can delete their own [tabel]** | DELETE | `authenticated` | `user_id = (select auth.uid())` | Gebruikers kunnen alleen eigen rijen verwijderen |
+
+**Verschil met profiles:** Q&A-tabellen hebben wél INSERT en DELETE policies (gebruikers plaatsen actief content), terwijl profiles alleen via triggers worden aangemaakt.
+
+---
+
+## Q&A Indexes
+
+| Index | Tabel | Kolom(men) | Doel |
+|-------|-------|------------|------|
+| `idx_questions_user_id` | `questions` | `user_id` | Vragen ophalen per gebruiker |
+| `idx_questions_created_at` | `questions` | `created_at DESC` | Sorteren op nieuwste vragen |
+| `idx_answers_question_id` | `answers` | `question_id` | Antwoorden ophalen bij een vraag |
+| `idx_answers_user_id` | `answers` | `user_id` | Antwoorden per gebruiker |
+| `idx_answers_created_at` | `answers` | `created_at DESC` | Sorteren op nieuwste antwoorden |
+| `idx_answer_replies_answer_id` | `answer_replies` | `answer_id` | Reacties ophalen bij een antwoord |
+| `idx_answer_replies_user_id` | `answer_replies` | `user_id` | Reacties per gebruiker |
+| `idx_answer_replies_created_at` | `answer_replies` | `created_at DESC` | Sorteren op nieuwste reacties |
+
+---
+
 ## Toekomstige uitbreidingen
 
 In latere fasen van het project worden de volgende tabellen toegevoegd:
 
-- **Q&A tabellen:** `questions`, `answers`, `question_votes`, `answer_votes`
 - **Content tabellen:** `blog_posts`, `tutorials`, `ai_tools`
 - **Moderatie tabellen:** `moderation_queue`, `moderation_actions`
 
@@ -104,6 +179,6 @@ In latere fasen van het project worden de volgende tabellen toegevoegd:
 
 ---
 
-**Laatst bijgewerkt:** 2026-02-09
-**Fase:** 4 - Database & Auth
-**Migratie versie:** 00001
+**Laatst bijgewerkt:** 2026-02-10
+**Fase:** 13 - Q&A Datamodel
+**Migratie versie:** 00002
