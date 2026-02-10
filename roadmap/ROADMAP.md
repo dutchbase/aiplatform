@@ -184,7 +184,12 @@ Plans:
 
 ## Fase 13 – Q&A-datamodel
 
-- [ ] **13 – Q&A-datamodel** — Tabellen vragen, antwoorden, reacties; RLS; rollen.
+**Goal:** Database ondersteunt het Q&A-model: questions, answers, answer_replies tabellen; RLS en rollen (anoniem lezen, posten met account).
+
+**Plans:** 1 plan
+
+Plans:
+- [ ] 13-01-PLAN.md — SQL migration voor Q&A schema (questions, answers, answer_replies), RLS policies, triggers, indexes, en schema-documentatie
 
 **Document:** [phase-13-qa-datamodel.md](./phase-13-qa-datamodel.md)
 
