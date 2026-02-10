@@ -2,12 +2,12 @@
 
 ## Current Position
 
-Phase: 15 of 25 (Q&A Frontend) - COMPLETE
+Phase: 16 of 25 (Q&A Formulieren) - COMPLETE (next: Phase 17)
 Plan: 1 of 1 (in phase)
-Status: Phase complete
-Last activity: 2026-02-10 - Completed 15-01-PLAN.md (Q&A Frontend)
+Status: Phase 16 complete; Phases 17-20 planned, ready for execution
+Last activity: 2026-02-10 - Completed 16-01-PLAN.md (Q&A write forms with auth gates)
 
-Progress: [===============--------------] 64% (16/25 phases complete)
+Progress: [================-------------] 68% (17/25 phases complete)
 
 ## Accumulated Decisions
 
@@ -73,6 +73,7 @@ Progress: [===============--------------] 64% (16/25 phases complete)
 | 15-01-D1 | 15 | profiles JOIN added to all four Q&A query functions | Consistent author name availability; avoids partial coverage surprises |
 | 15-01-D2 | 15 | Promise.all for per-answer reply fetching | Parallel DB calls (O(1) latency) vs sequential O(n) |
 | 15-01-D3 | 15 | &middot; HTML entity for author/date separator in JSX | JSX best practice for special characters |
+| 16-01-D1 | 16 | `as unknown as ActionFn` cast for useFormState with single-arg Server Actions | Safe runtime; avoids modifying actions.ts signatures; cast localized to form components |
 
 ## Blockers / Concerns
 
@@ -102,9 +103,10 @@ None.
 | 13 | 13-01 | Q&A database schema: questions, answers, answer_replies with RLS, triggers, indexes | supabase/migrations/00002_qa_schema.sql, docs/database-schema.md | ✓ 2/2 |
 | 14 | 14-01 | Q&A API layer: typed read functions, authenticated Server Actions, API contract docs | lib/qa/types.ts, lib/qa/queries.ts, app/qa/actions.ts, docs/qa.md | ✓ 3/3 |
 | 15 | 15-01 | Q&A frontend: overview page with question list, detail page with answer/reply hierarchy, profiles JOIN | app/qa/page.tsx, app/qa/vraag/[id]/page.tsx, lib/qa/queries.ts, lib/qa/types.ts | ✓ 3/3 |
+| 16 | 16-01 | Q&A write forms: ask-question page, AskQuestionForm, AnswerForm, ReplyForm with auth gates | app/qa/nieuwe-vraag/page.tsx, components/qa/ask-question-form.tsx, components/qa/answer-form.tsx, components/qa/reply-form.tsx | ✓ 3/3 |
 
 ## Session Continuity
 
-Last session: 2026-02-10T18:08:58Z
-Stopped at: Completed Phase 15 - Q&A Frontend (15-01-PLAN.md, all tasks done, verified)
+Last session: 2026-02-10T18:38:53Z
+Stopped at: Completed 16-01-PLAN.md (Q&A write forms: ask-question page, AnswerForm, ReplyForm with auth gates)
 Resume file: None
