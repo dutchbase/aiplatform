@@ -2,12 +2,12 @@
 
 ## Current Position
 
-Phase: 16 of 25 (Q&A Formulieren) - COMPLETE (next: Phase 17)
+Phase: 17 of 25 (Breadcrumbs & 404) - COMPLETE (next: Phase 18)
 Plan: 1 of 1 (in phase)
-Status: Phase 16 complete; Phases 17-20 planned, ready for execution
-Last activity: 2026-02-10 - Completed 16-01-PLAN.md (Q&A write forms with auth gates)
+Status: Phase 17 complete; Phases 18-20 planned, ready for execution
+Last activity: 2026-02-10 - Completed 17-01-PLAN.md (Breadcrumbs component + 404 page)
 
-Progress: [================-------------] 68% (17/25 phases complete)
+Progress: [=================------------] 72% (18/25 phases complete)
 
 ## Accumulated Decisions
 
@@ -74,6 +74,9 @@ Progress: [================-------------] 68% (17/25 phases complete)
 | 15-01-D2 | 15 | Promise.all for per-answer reply fetching | Parallel DB calls (O(1) latency) vs sequential O(n) |
 | 15-01-D3 | 15 | &middot; HTML entity for author/date separator in JSX | JSX best practice for special characters |
 | 16-01-D1 | 16 | `as unknown as ActionFn` cast for useFormState with single-arg Server Actions | Safe runtime; avoids modifying actions.ts signatures; cast localized to form components |
+| 17-01-D1 | 17 | Section-relative breadcrumbs (no Home crumb) per PRD 4.4 style | Concise crumbs; Home always accessible via header nav |
+| 17-01-D2 | 17 | › separator with aria-hidden on all breadcrumbs | Screen reader friendly; consistent visual separator |
+| 17-01-D3 | 17 | Named exports only on Breadcrumbs component (no default export) | Both Breadcrumbs and BreadcrumbItem importable together |
 
 ## Blockers / Concerns
 
@@ -104,9 +107,10 @@ None.
 | 14 | 14-01 | Q&A API layer: typed read functions, authenticated Server Actions, API contract docs | lib/qa/types.ts, lib/qa/queries.ts, app/qa/actions.ts, docs/qa.md | ✓ 3/3 |
 | 15 | 15-01 | Q&A frontend: overview page with question list, detail page with answer/reply hierarchy, profiles JOIN | app/qa/page.tsx, app/qa/vraag/[id]/page.tsx, lib/qa/queries.ts, lib/qa/types.ts | ✓ 3/3 |
 | 16 | 16-01 | Q&A write forms: ask-question page, AskQuestionForm, AnswerForm, ReplyForm with auth gates | app/qa/nieuwe-vraag/page.tsx, components/qa/ask-question-form.tsx, components/qa/answer-form.tsx, components/qa/reply-form.tsx | ✓ 3/3 |
+| 17 | 17-01 | Breadcrumbs component + 404 not-found page integrated on 10 sub-pages | components/ui/breadcrumbs.tsx, app/not-found.tsx, 10 page files, docs/seo.md, docs/CHANGELOG.md | ✓ 3/3 |
 
 ## Session Continuity
 
-Last session: 2026-02-10T18:38:53Z
-Stopped at: Completed 16-01-PLAN.md (Q&A write forms: ask-question page, AnswerForm, ReplyForm with auth gates)
+Last session: 2026-02-10T19:00:05Z
+Stopped at: Completed 17-01-PLAN.md (Breadcrumbs component + 404 not-found page on 10 sub-pages)
 Resume file: None
