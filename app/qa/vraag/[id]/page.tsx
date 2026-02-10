@@ -1,6 +1,10 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+import Link from 'next/link'
+import { createClient } from '@/lib/supabase/server'
 import { getQuestionById, getAnswersByQuestionId, getRepliesByAnswerId } from '@/lib/qa/queries'
+import { AnswerForm } from '@/components/qa/answer-form'
+import { ReplyForm } from '@/components/qa/reply-form'
 
 type Props = { params: Promise<{ id: string }> }
 
@@ -18,6 +22,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function QAVraagPage({ params }: Props) {
   const { id } = await params
+
+  const supabase = await createClient()
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
+
   const question = await getQuestionById(id)
   if (!question) notFound()
 
@@ -73,9 +83,42 @@ export default async function QAVraagPage({ params }: Props) {
                     ))}
                   </ul>
                 )}
+
+                {/* Reply form or login CTA */}
+                {user ? (
+                  <ReplyForm answerId={answer.id} />
+                ) : (
+                  <div className="mt-3">
+                    <Link
+                      href="/login"
+                      className="text-sm text-primary hover:underline"
+                    >
+                      Inloggen om te reageren
+                    </Link>
+                  </div>
+                )}
               </li>
             ))}
           </ul>
+        )}
+      </div>
+
+      {/* Answer form or login CTA */}
+      <div className="mt-8 border-t border-border pt-8">
+        {user ? (
+          <AnswerForm questionId={id} />
+        ) : (
+          <div className="bg-muted rounded-lg p-6 text-center">
+            <p className="text-muted-foreground mb-3">
+              Je moet ingelogd zijn om een antwoord te plaatsen.
+            </p>
+            <Link
+              href="/login"
+              className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90"
+            >
+              Inloggen
+            </Link>
+          </div>
         )}
       </div>
     </div>

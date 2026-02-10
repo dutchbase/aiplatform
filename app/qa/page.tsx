@@ -17,6 +17,14 @@ export default async function QAPage() {
       <p className="text-lg text-muted-foreground mb-8">
         Welkom bij onze Q&A community. Stel vragen, deel kennis en help elkaar met AI-assistenten.
       </p>
+      <div className="mb-6">
+        <Link
+          href="/qa/nieuwe-vraag"
+          className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90"
+        >
+          Vraag stellen
+        </Link>
+      </div>
       {questions.length === 0 ? (
         <p className="text-lg text-muted-foreground">
           Nog geen vragen gesteld. Kom binnenkort terug!
