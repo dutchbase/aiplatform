@@ -2,12 +2,12 @@
 
 ## Current Position
 
-Phase: 13 of 25 (Q&A Datamodel) - COMPLETE
+Phase: 14 of 25 (Q&A API) - COMPLETE
 Plan: 1 of 1 (in phase)
 Status: Phase complete
-Last activity: 2026-02-10 - Completed 13-01-PLAN.md (Q&A Datamodel)
+Last activity: 2026-02-10 - Completed 14-01-PLAN.md (Q&A API)
 
-Progress: [=============----------------] 56% (14/25 phases complete)
+Progress: [==============---------------] 60% (15/25 phases complete)
 
 ## Accumulated Decisions
 
@@ -67,6 +67,9 @@ Progress: [=============----------------] 56% (14/25 phases complete)
 | 12-01-D1 | 12 | Native Response constructor (not NextResponse) for RSS Route Handler | Works correctly for non-JSON content types; no next/server import needed |
 | 12-01-D2 | 12 | Use post.excerpt field (BlogPost uses excerpt, not description) | Matches actual BlogPost interface field name from lib/data/blog.ts |
 | 12-01-D3 | 12 | Production domain as NEXT_PUBLIC_BASE_URL fallback (not localhost) | Committed feed XML references real domain; localhost would be wrong in production |
+| 14-01-D1 | 14 | Manual validation instead of Zod (not in package.json) | Identical constraint behavior without new dependency; future phases may add zod if needed |
+| 14-01-D2 | 14 | Read functions throw on DB error; actions return { error } | Idiomatic split: Server Components handle thrown errors via error.tsx; actions return safe discriminated unions |
+| 14-01-D3 | 14 | UUID regex validation for foreign key inputs in actions | Validates question_id/answer_id before DB insert without Zod |
 
 ## Blockers / Concerns
 
@@ -94,9 +97,10 @@ None.
 | 11 | 11-01 | Blog data module + overview cards + SSG detail pages with 3 slugs | lib/data/blog.ts, app/blog/page.tsx, app/blog/[slug]/page.tsx, docs/blog.md | ✓ 9/9 |
 | 12 | 12-01 | RSS 2.0 feed at /feed.xml + alternate link in root layout + docs | app/feed.xml/route.ts, app/layout.tsx, docs/rss.md | ✓ 2/2 |
 | 13 | 13-01 | Q&A database schema: questions, answers, answer_replies with RLS, triggers, indexes | supabase/migrations/00002_qa_schema.sql, docs/database-schema.md | ✓ 2/2 |
+| 14 | 14-01 | Q&A API layer: typed read functions, authenticated Server Actions, API contract docs | lib/qa/types.ts, lib/qa/queries.ts, app/qa/actions.ts, docs/qa.md | ✓ 3/3 |
 
 ## Session Continuity
 
-Last session: 2026-02-10T16:30:00Z
-Stopped at: Completed Phase 13 - Q&A Datamodel (13-01-PLAN.md, all tasks done, verified)
+Last session: 2026-02-10T17:13:43Z
+Stopped at: Completed Phase 14 - Q&A API (14-01-PLAN.md, all tasks done, verified)
 Resume file: None
