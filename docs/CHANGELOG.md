@@ -7,6 +7,16 @@ en dit project volgt [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
+## Phase 14 — Q&A API (2026-02-10)
+
+### Toegevoegd
+- `lib/qa/types.ts` — TypeScript types voor Question, Answer, AnswerReply en input-shapes
+- `lib/qa/queries.ts` — Read functions: getQuestions, getQuestionById, getAnswersByQuestionId, getRepliesByAnswerId
+- `app/qa/actions.ts` — Server Actions: createQuestion, createAnswer, createReply (met auth-check en handmatige validatie)
+- `docs/qa.md` — API-contractdocumentatie voor Q&A server actions en read functions
+
+---
+
 ## Phase 13 — Q&A Datamodel (2026-02-10)
 
 ### Toegevoegd
