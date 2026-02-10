@@ -56,6 +56,13 @@ export default function OpenClawInstallatiePage() {
 npm --version
 git --version`}</code>
           </pre>
+          <p className="text-sm text-muted-foreground mt-3">
+            Bekijk de{' '}
+            <Link href="/openclaw/tutorials/eerste-stappen" className="text-primary hover:underline">
+              eerste-stappen tutorial
+            </Link>{' '}
+            om direct aan de slag te gaan na installatie.
+          </p>
         </section>
 
         {/* Section 2: Installatie */}
@@ -119,6 +126,13 @@ cd openclaw`}</code>
               </pre>
             </div>
           </div>
+          <p className="text-sm text-muted-foreground mt-3">
+            Heb je configuratiehulp nodig? Lees de{' '}
+            <Link href="/openclaw/tutorials/configuratie" className="text-primary hover:underline">
+              configuratie-tutorial
+            </Link>
+            .
+          </p>
         </section>
 
         {/* Section 3: Verificatie */}
