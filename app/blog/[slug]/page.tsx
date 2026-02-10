@@ -4,6 +4,8 @@ import { redirect } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import { getBlogPost, blogPosts } from '@/lib/data/blog'
 import { Breadcrumbs } from '@/components/ui/breadcrumbs'
+import { RelatedContent } from '@/components/shared/related-content'
+import { getRelatedPosts } from '@/lib/data/related'
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -47,6 +49,8 @@ export default async function BlogPostPage({ params }: Props) {
   if (!post) {
     redirect('/blog')
   }
+
+  const relatedItems = getRelatedPosts(slug)
 
   const articleSchema = {
     '@context': 'https://schema.org',
@@ -101,6 +105,8 @@ export default async function BlogPostPage({ params }: Props) {
             </section>
           ))}
         </div>
+
+        <RelatedContent heading="Zie ook" items={relatedItems} />
 
         {/* Footer CTA */}
         <section className="border-t border-border pt-8">

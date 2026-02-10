@@ -5,6 +5,8 @@ import { Button } from '@/components/ui/button'
 import { OpenClawNav } from '@/components/openclaw/openclaw-nav'
 import { tutorials } from '@/lib/data/tutorials'
 import { Breadcrumbs } from '@/components/ui/breadcrumbs'
+import { RelatedContent } from '@/components/shared/related-content'
+import { getRelatedTutorials } from '@/lib/data/related'
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -48,6 +50,8 @@ export default async function TutorialPage({ params }: Props) {
   if (!tutorial) {
     redirect('/openclaw/tutorials')
   }
+
+  const relatedItems = getRelatedTutorials(slug)
 
   const articleSchema = {
     '@context': 'https://schema.org',
@@ -97,6 +101,8 @@ export default async function TutorialPage({ params }: Props) {
             </section>
           ))}
         </div>
+
+        <RelatedContent heading="Andere tutorials" items={relatedItems} />
 
         {/* Footer CTA */}
         <section className="border-t border-border pt-8">
