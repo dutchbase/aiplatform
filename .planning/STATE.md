@@ -2,12 +2,12 @@
 
 ## Current Position
 
-Phase: 10 of 25 (OpenClaw Tutorials) - COMPLETE
+Phase: 11 of 25 (Blog & Nieuws) - COMPLETE
 Plan: 1 of 1 (in phase)
 Status: Phase complete
-Last activity: 2026-02-10 - Phase 10 verified and complete
+Last activity: 2026-02-10 - Completed 11-01-PLAN.md (Blog & Nieuws)
 
-Progress: [==========-------------------] 44% (11/25 phases complete)
+Progress: [===========------------------] 48% (12/25 phases complete)
 
 ## Accumulated Decisions
 
@@ -60,6 +60,10 @@ Progress: [==========-------------------] 44% (11/25 phases complete)
 | 10-01-D2 | 10 | generateStaticParams for SSG tutorial detail pages | Pre-renders 3 slug pages at build time - faster, no server round-trip needed |
 | 10-01-D3 | 10 | redirect() over notFound() for unknown slugs | Better UX - lands user on working page rather than 404 |
 | 10-01-D4 | 10 | OpenClawNav on tutorial detail pages too | Maintains section context for users navigating between tutorials and other OpenClaw sections |
+| 11-01-D1 | 11 | Static data module in lib/data/blog.ts mirrors tutorials.ts | Consistent pattern, no migration needed, fully typed, git-versioned |
+| 11-01-D2 | 11 | blogPosts sorted newest-first in data definition | Single source of truth; no runtime sort calls needed on overview or detail |
+| 11-01-D3 | 11 | redirect('/blog') for unknown slugs (not 404) | Consistent with Phase 10 tutorials pattern; better UX than error page |
+| 11-01-D4 | 11 | updatedAt conditional on both presence and difference from publishedAt | Avoids showing redundant "updated" date when content hasn't changed |
 
 ## Blockers / Concerns
 
@@ -84,9 +88,10 @@ None.
 | 09 | 09-01 | OpenClaw overview page with 4-card navigation and installation guide with 3 sections | app/openclaw/page.tsx, app/openclaw/installatie/page.tsx | ✓ 9/9 |
 | 09 | 09-02 | OpenClawNav component with active states integrated into overview and installation pages | components/openclaw/openclaw-nav.tsx, app/openclaw/page.tsx, app/openclaw/installatie/page.tsx | ✓ 9/9 |
 | 10 | 10-01 | Tutorials data module + overview page + SSG detail pages with 3 slugs | lib/data/tutorials.ts, app/openclaw/tutorials/page.tsx, app/openclaw/tutorials/[slug]/page.tsx | ✓ 6/6 |
+| 11 | 11-01 | Blog data module + overview cards + SSG detail pages with 3 slugs | lib/data/blog.ts, app/blog/page.tsx, app/blog/[slug]/page.tsx, docs/blog.md | ✓ 9/9 |
 
 ## Session Continuity
 
-Last session: 2026-02-10T08:20:00Z
-Stopped at: Completed Phase 10 - OpenClaw Tutorials (all plans done, verified 6/6)
+Last session: 2026-02-10T15:58:03Z
+Stopped at: Completed Phase 11 - Blog & Nieuws (11-01-PLAN.md, all tasks done, verified 9/9)
 Resume file: None
