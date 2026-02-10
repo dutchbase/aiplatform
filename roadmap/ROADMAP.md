@@ -163,7 +163,12 @@ Plans:
 
 ## Fase 11 – Blog & nieuws
 
-- [ ] **11 – Blog & nieuws** — Blog-overzicht, artikel-detail, data-model (indien nodig).
+**Goal:** Blog/nieuws heeft een overzichtspagina en een detailpagina per artikel. Data komt uit een statische module (lib/data/blog.ts), consistent met het tutorials-patroon. Keuze gedocumenteerd in docs/blog.md.
+
+**Plans:** 1 plan
+
+Plans:
+- [ ] 11-01-PLAN.md — Blog data module, overview page, detail page with generateMetadata and redirect
 
 **Document:** [phase-11-blog-nieuws.md](./phase-11-blog-nieuws.md)
 
