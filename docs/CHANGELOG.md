@@ -7,6 +7,52 @@ en dit project volgt [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
+## [Phase 7] - 2026-02-10 - SEO Basis
+
+### Added
+- **Metadata exports** for all 15 route pages (openclaw, ai-assistenten, qa, blog, kennisbank sections)
+- **Dynamic metadata** using `generateMetadata` for tutorial, question, and blog detail pages
+- **Unique titles** across all pages - no duplicates
+- **Dutch descriptions** (1-2 sentences) for every page
+- **SEO documentation** in `docs/seo.md` with implementation patterns and best practices
+
+### Changed
+- Enhanced all section pages with proper Next.js 14 metadata API
+
+### Technical Details
+- Static pages use `export const metadata` pattern
+- Dynamic routes use `export async function generateMetadata` with async params
+- Title template inheritance from root layout (`%s | AI Assistenten Hub`)
+- Open Graph support inherited from `app/layout.tsx`
+- Blog slug title transformation: `split('-').map(capitalize).join(' ')` for readable titles
+
+### Verification
+- All pages have unique titles ✓
+- No duplicate metadata across routes ✓
+- TypeScript compilation successful ✓
+- Metadata renders correctly in HTML `<head>` ✓
+
+### Files Modified
+- `app/openclaw/page.tsx` - Added metadata
+- `app/openclaw/installatie/page.tsx` - Added metadata
+- `app/openclaw/tutorials/page.tsx` - Added metadata
+- `app/openclaw/tutorials/[slug]/page.tsx` - Added generateMetadata
+- `app/openclaw/use-cases/page.tsx` - Added metadata
+- `app/openclaw/nieuws/page.tsx` - Added metadata
+- `app/ai-assistenten/page.tsx` - Added metadata
+- `app/ai-assistenten/cursor/page.tsx` - Added metadata
+- `app/ai-assistenten/claude-code/page.tsx` - Added metadata
+- `app/ai-assistenten/overzicht/page.tsx` - Added metadata
+- `app/qa/page.tsx` - Added metadata
+- `app/qa/vraag/[id]/page.tsx` - Added generateMetadata
+- `app/blog/page.tsx` - Added metadata
+- `app/blog/[slug]/page.tsx` - Added generateMetadata
+- `app/kennisbank/page.tsx` - Added metadata
+- `docs/seo.md` - Created comprehensive SEO documentation
+- `docs/CHANGELOG.md` - This file
+
+---
+
 ## [0.6.0] - 2026-02-09
 
 ### Fase 5 - Sessie & Profiel
