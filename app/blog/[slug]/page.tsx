@@ -6,9 +6,13 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
+
   return {
-    title: `${slug.replace(/-/g, ' ')}`,
-    description: `Blog artikel over ${slug.replace(/-/g, ' ')}`,
+    title: slug
+      .split('-')
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' '),
+    description: `Lees meer over ${slug} in dit blogartikel over AI-assistenten en development.`,
   }
 }
 

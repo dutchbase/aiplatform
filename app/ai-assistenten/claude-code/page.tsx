@@ -2,7 +2,8 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Claude Code',
-  description: 'Alles over Claude Code - AI pair programmer',
+  description:
+    'Ontdek Claude Code - de AI pair programmer van Anthropic voor intelligent code assistentie.',
 }
 
 export default function ClaudeCodePage() {

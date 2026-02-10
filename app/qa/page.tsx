@@ -2,7 +2,8 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Q&A',
-  description: 'Stel vragen en deel kennis over AI-assistenten',
+  description:
+    'Stel vragen en deel kennis over AI-assistenten. Community-gedreven hulp voor ontwikkelaars.',
 }
 
 export default function QAPage() {

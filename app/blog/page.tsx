@@ -2,7 +2,8 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Blog',
-  description: 'Artikelen en inzichten over AI-assistenten',
+  description:
+    'Artikelen, inzichten en updates over AI-assistenten, development trends en praktische tips.',
 }
 
 export default function BlogPage() {

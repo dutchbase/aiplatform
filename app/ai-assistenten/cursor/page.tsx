@@ -2,7 +2,8 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Cursor',
-  description: 'Alles over Cursor - de AI-powered code editor',
+  description:
+    'Alles over Cursor - de AI-powered code editor met GPT-4 integratie voor snellere development.',
 }
 
 export default function CursorPage() {

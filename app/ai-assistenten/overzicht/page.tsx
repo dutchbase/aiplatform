@@ -2,7 +2,8 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'AI Assistenten Vergelijking',
-  description: 'Vergelijk verschillende AI-assistenten voor developers',
+  description:
+    'Vergelijk verschillende AI-assistenten op features, prijs, en gebruik om de beste keuze te maken.',
 }
 
 export default function AIAssistentenOverzichtPage() {

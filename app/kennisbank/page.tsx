@@ -2,7 +2,8 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Kennisbank',
-  description: 'Uitgebreide kennisbank over AI-assistenten',
+  description:
+    'Uitgebreide kennisbank met handleidingen, documentatie en referentiemateriaal over AI-assistenten.',
 }
 
 export default function KennisbankPage() {

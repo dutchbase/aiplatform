@@ -6,9 +6,10 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params
+
   return {
     title: `Vraag #${id}`,
-    description: `Q&A vraag nummer ${id} over AI-assistenten`,
+    description: `Bekijk vraag #${id} en antwoorden uit de AI Assistenten community.`,
   }
 }
 
