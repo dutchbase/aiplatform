@@ -48,8 +48,26 @@ export default async function BlogPostPage({ params }: Props) {
     redirect('/blog')
   }
 
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.publishedAt,
+    dateModified: post.updatedAt ?? post.publishedAt,
+    author: {
+      '@type': 'Organization',
+      name: 'AI Assistenten Hub',
+    },
+  }
+
   return (
-    <div className="container py-12">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <div className="container py-12">
       <div className="max-w-3xl mx-auto space-y-12">
         <Breadcrumbs items={[
           { label: 'Blog', href: '/blog' },
@@ -95,5 +113,6 @@ export default async function BlogPostPage({ params }: Props) {
         </section>
       </div>
     </div>
+    </>
   )
 }

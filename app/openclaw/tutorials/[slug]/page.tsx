@@ -49,8 +49,26 @@ export default async function TutorialPage({ params }: Props) {
     redirect('/openclaw/tutorials')
   }
 
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: tutorial.title,
+    description: tutorial.description,
+    datePublished: tutorial.lastUpdated,
+    dateModified: tutorial.lastUpdated,
+    author: {
+      '@type': 'Organization',
+      name: 'AI Assistenten Hub',
+    },
+  }
+
   return (
-    <div className="container py-12">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <div className="container py-12">
       <div className="max-w-3xl mx-auto space-y-12">
         <Breadcrumbs items={[
           { label: 'OpenClaw', href: '/openclaw' },
@@ -91,5 +109,6 @@ export default async function TutorialPage({ params }: Props) {
         </section>
       </div>
     </div>
+    </>
   )
 }
