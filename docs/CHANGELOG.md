@@ -7,6 +7,25 @@ en dit project volgt [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
+## [Phase 16] - 2026-02-10 - Q&A Formulieren
+
+### Added
+- **Pagina "Vraag stellen"** (`app/qa/nieuwe-vraag/page.tsx`): Server Component met auth-check; niet-ingelogde gebruikers zien login-CTA, ingelogde gebruikers zien `AskQuestionForm`
+- **`AskQuestionForm`** (`components/qa/ask-question-form.tsx`): Client Component met `useFormState(createQuestion)`, foutafhandeling, en `useRouter`-redirect naar `/qa/vraag/[id]` na succesvolle submit
+- **`AnswerForm`** (`components/qa/answer-form.tsx`): Client Component met `useFormState(createAnswer)`, hidden `question_id` input, inline error- en successtatus
+- **`ReplyForm`** (`components/qa/reply-form.tsx`): Client Component met toggle (Reageer-knop → formulier → sluit na submit), `useFormState(createReply)`, hidden `answer_id` input
+- **Auth-gate op detailpagina** (`app/qa/vraag/[id]/page.tsx`): `createClient().auth.getUser()` bepaalt of `AnswerForm`/`ReplyForm` of login-CTA getoond wordt
+- **"Vraag stellen" knop op Q&A-overzicht** (`app/qa/page.tsx`): Link naar `/qa/nieuwe-vraag` zodat gebruikers makkelijk een vraag kunnen stellen
+
+### Technical Details
+- `useFormState` geïmporteerd uit `react-dom` (React 18.3.1, conform beslissing 05-01-D3)
+- Auth check via `createClient().auth.getUser()` in Server Components (conform beslissing 03-01-D3)
+- Na `createQuestion` succes: `useEffect` op `state.id` triggert `router.push('/qa/vraag/${id}')` — geen redirect() in de Server Action nodig omdat de action al in een Client Component context wordt aangeroepen
+- `createAnswer` en `createReply` doen al `revalidatePath` in actions.ts — na submit refresht Next.js de Server Component automatisch
+- Alle formulieren gebruiken semantische Tailwind classes (`border-input`, `bg-background`, `text-foreground`)
+
+---
+
 ## [Phase 15] - 2026-02-10 - Q&A Frontend
 
 ### Added
