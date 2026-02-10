@@ -7,6 +7,18 @@ en dit project volgt [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
+## [Phase 20] - 2026-02-10 - Interne Links
+
+### Added
+- **RelatedContent component** (`components/shared/related-content.tsx`): herbruikbaar Server Component dat een "Zie ook" / "Andere tutorials" sectie rendert op basis van een array van `{ title, href }` items
+- **related.ts utility** (`lib/data/related.ts`): `getRelatedPosts(currentSlug, limit?)` en `getRelatedTutorials(currentSlug, limit?)` — filtert huidige pagina uit de statische data-arrays en retourneert maximaal `limit` (standaard 3) gerelateerde items
+- **Blog-detailpagina** (`app/blog/[slug]/page.tsx`): "Zie ook"-sectie met links naar maximaal 3 andere blogartikelen, boven de "Terug naar blog" CTA
+- **Tutorial-detailpagina** (`app/openclaw/tutorials/[slug]/page.tsx`): "Andere tutorials"-sectie met links naar maximaal 3 andere tutorials, boven de "Terug naar overzicht" CTA
+- **Q&A-vraagpagina** (`app/qa/vraag/[id]/page.tsx`): statisch "Relevante documentatie"-blok met 4 links naar OpenClaw-installatie en tutorials
+- **Installatiepagina** (`app/openclaw/installatie/page.tsx`): twee inline body-links naar tutorial-detailpagina's (eerste-stappen en configuratie)
+
+---
+
 ## [Phase 19] - 2026-02-10 - Eerste Content
 
 ### Toegevoegd

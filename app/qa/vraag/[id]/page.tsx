@@ -149,6 +149,45 @@ export default async function QAVraagPage({ params }: Props) {
           </div>
         )}
       </div>
+
+      {/* Relevante documentatie */}
+      <div className="mt-10 border-t border-border pt-8">
+        <h2 className="text-xl font-semibold mb-4 text-foreground">Relevante documentatie</h2>
+        <ul className="space-y-2">
+          <li>
+            <Link
+              href="/openclaw/installatie"
+              className="text-primary hover:underline transition-colors"
+            >
+              OpenClaw Installatie – Stap voor Stap
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/openclaw/tutorials/eerste-stappen"
+              className="text-primary hover:underline transition-colors"
+            >
+              Eerste Stappen met OpenClaw
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/openclaw/tutorials/configuratie"
+              className="text-primary hover:underline transition-colors"
+            >
+              OpenClaw Configureren
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/openclaw/tutorials/tips"
+              className="text-primary hover:underline transition-colors"
+            >
+              Tips en Trucs voor OpenClaw
+            </Link>
+          </li>
+        </ul>
+      </div>
     </div>
     </>
   )
