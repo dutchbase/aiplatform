@@ -7,6 +7,28 @@ en dit project volgt [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
+## [Phase 15] - 2026-02-10 - Q&A Frontend
+
+### Added
+- **Q&A-overzichtspagina** (`app/qa/page.tsx`): haalt vragen op via `getQuestions()` uit lib/qa/queries.ts; toont vraagtitels als links naar detailpagina's, auteur en datum
+- **Q&A-detailpagina** (`app/qa/vraag/[id]/page.tsx`): toont volledige vraag-thread met vraag, antwoorden en per-antwoord reacties in visuele hiëarchie
+- **Lege en foutstates**: overzicht toont vriendelijke melding bij 0 vragen; detail roept `notFound()` aan bij onbekend id
+- **Dynamische metadata**: detailpagina's gebruiken vraagtitel in paginatitel via `generateMetadata`
+
+### Changed
+- `lib/qa/queries.ts`: queries bijgewerkt met `profiles(display_name)` JOIN voor auteursnamen
+- `lib/qa/types.ts`: Question, Answer en AnswerReply types uitgebreid met `profiles` veld
+- `app/qa/page.tsx` en `app/qa/vraag/[id]/page.tsx`: vervangen door werkende implementaties
+
+### Technical Details
+- Server Components throughout — geen 'use client'
+- `Promise.all` voor parallelle reactie-ophaling per antwoord
+- Fallback `'Gebruiker'` voor anonieme profielen
+- `toLocaleDateString('nl-NL')` voor Nederlandse datumnotatie
+- `notFound()` from `next/navigation` voor 404-afhandeling
+
+---
+
 ## Phase 14 — Q&A API (2026-02-10)
 
 ### Toegevoegd
