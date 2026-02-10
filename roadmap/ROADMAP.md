@@ -228,7 +228,12 @@ Plans:
 
 ## Fase 16 – Q&A-formulieren
 
-- [ ] **16 – Q&A-formulieren** — Formulieren: vraag stellen, antwoord geven, reactie (auth-check).
+**Goal:** Ingelogde gebruikers kunnen een vraag stellen, een antwoord geven en een reactie plaatsen via formulieren. Auth-check: niet-ingelogde gebruikers worden naar login geleid of zien een duidelijke oproep om in te loggen.
+
+**Plans:** 1 plan
+
+Plans:
+- [ ] 16-01-PLAN.md — AskQuestionForm (/qa/nieuwe-vraag), AnswerForm + ReplyForm op detailpagina, auth-gates, CHANGELOG
 
 **Document:** [phase-16-qa-formulieren.md](./phase-16-qa-formulieren.md)
 
