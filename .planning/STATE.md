@@ -2,12 +2,12 @@
 
 ## Current Position
 
-Phase: 19 of 25 (Eerste Content) - COMPLETE (next: Phase 20)
+Phase: 20 of 25 (Interne Links) - COMPLETE (next: Phase 21)
 Plan: 1 of 1 (in phase)
-Status: Phase 19 complete; Phase 20 (Interne Links) planned, ready for execution
-Last activity: 2026-02-10 - Completed 19-01-PLAN.md (installatie page full content + 3 tutorials expanded to 4 steps each)
+Status: Phase 20 complete; Phase 21 (Moderatie Basis) planned, ready for execution
+Last activity: 2026-02-10 - Completed 20-01-PLAN.md (RelatedContent component, related.ts utility, blog/tutorial/qa/installatie cross-links)
 
-Progress: [===================----------] 80% (20/25 phases complete)
+Progress: [====================----------] 84% (21/25 phases complete)
 
 ## Accumulated Decisions
 
@@ -82,6 +82,9 @@ Progress: [===================----------] 80% (20/25 phases complete)
 | 18-01-D3 | 18 | Blog dateModified uses updatedAt ?? publishedAt | updatedAt is optional on BlogPost; fallback ensures dateModified always present |
 | 18-01-D4 | 18 | QAPage suggestedAnswer emits empty array when no answers | Valid Schema.org: answerCount: 0, suggestedAnswer: []; no conditional omission of script tag |
 | 18-01-D5 | 18 | JSON-LD script tag as first Fragment child, never in shared layouts | Prevents duplicate JSON-LD blocks; each page controls its own structured data exactly once |
+| 20-01-D1 | 20 | RelatedContent is a pure Server Component (no 'use client') | Consistent with project Server Components First architecture; no interactivity needed for a link list |
+| 20-01-D2 | 20 | related.ts imports from static data arrays | No DB/API calls needed for MVP static content; same pattern as lib/data/blog.ts and lib/data/tutorials.ts |
+| 20-01-D3 | 20 | Q&A "Relevante documentatie" is static (same links on every question page) | MVP scope; no per-question content classification needed; 4 core OpenClaw links are universally relevant |
 
 ## Blockers / Concerns
 
@@ -115,9 +118,10 @@ None.
 | 17 | 17-01 | Breadcrumbs component + 404 not-found page integrated on 10 sub-pages | components/ui/breadcrumbs.tsx, app/not-found.tsx, 10 page files, docs/seo.md, docs/CHANGELOG.md | ✓ 3/3 |
 | 18 | 18-01 | Schema.org JSON-LD on blog detail (Article), tutorial detail (Article), and Q&A detail (QAPage) pages | app/blog/[slug]/page.tsx, app/openclaw/tutorials/[slug]/page.tsx, app/qa/vraag/[id]/page.tsx, docs/seo.md, docs/CHANGELOG.md | ✓ 3/3 |
 | 19 | 19-01 | Full Dutch editorial content for OpenClaw installation page and all 3 tutorials (4 steps each); no placeholders remain | app/openclaw/installatie/page.tsx, lib/data/tutorials.ts, docs/CHANGELOG.md | ✓ 6/6 |
+| 20 | 20-01 | Internal linking: RelatedContent Server Component + related.ts utilities + cross-links on blog/tutorial/qa/installatie pages | lib/data/related.ts, components/shared/related-content.tsx, 4 page files, docs/CHANGELOG.md | ✓ 7/7 |
 
 ## Session Continuity
 
-Last session: 2026-02-10T20:09:00Z
-Stopped at: Completed 19-01-PLAN.md (installatie page full Dutch content + tutorials expanded to 4 steps each)
+Last session: 2026-02-10T20:17:00Z
+Stopped at: Completed 20-01-PLAN.md (RelatedContent component, related.ts utility, blog/tutorial/qa/installatie cross-links)
 Resume file: None
