@@ -2,12 +2,12 @@
 
 ## Current Position
 
-Phase: 14 of 25 (Q&A API) - COMPLETE
+Phase: 15 of 25 (Q&A Frontend) - COMPLETE
 Plan: 1 of 1 (in phase)
 Status: Phase complete
-Last activity: 2026-02-10 - Completed 14-01-PLAN.md (Q&A API)
+Last activity: 2026-02-10 - Completed 15-01-PLAN.md (Q&A Frontend)
 
-Progress: [==============---------------] 60% (15/25 phases complete)
+Progress: [===============--------------] 64% (16/25 phases complete)
 
 ## Accumulated Decisions
 
@@ -70,6 +70,9 @@ Progress: [==============---------------] 60% (15/25 phases complete)
 | 14-01-D1 | 14 | Manual validation instead of Zod (not in package.json) | Identical constraint behavior without new dependency; future phases may add zod if needed |
 | 14-01-D2 | 14 | Read functions throw on DB error; actions return { error } | Idiomatic split: Server Components handle thrown errors via error.tsx; actions return safe discriminated unions |
 | 14-01-D3 | 14 | UUID regex validation for foreign key inputs in actions | Validates question_id/answer_id before DB insert without Zod |
+| 15-01-D1 | 15 | profiles JOIN added to all four Q&A query functions | Consistent author name availability; avoids partial coverage surprises |
+| 15-01-D2 | 15 | Promise.all for per-answer reply fetching | Parallel DB calls (O(1) latency) vs sequential O(n) |
+| 15-01-D3 | 15 | &middot; HTML entity for author/date separator in JSX | JSX best practice for special characters |
 
 ## Blockers / Concerns
 
@@ -98,9 +101,10 @@ None.
 | 12 | 12-01 | RSS 2.0 feed at /feed.xml + alternate link in root layout + docs | app/feed.xml/route.ts, app/layout.tsx, docs/rss.md | ✓ 2/2 |
 | 13 | 13-01 | Q&A database schema: questions, answers, answer_replies with RLS, triggers, indexes | supabase/migrations/00002_qa_schema.sql, docs/database-schema.md | ✓ 2/2 |
 | 14 | 14-01 | Q&A API layer: typed read functions, authenticated Server Actions, API contract docs | lib/qa/types.ts, lib/qa/queries.ts, app/qa/actions.ts, docs/qa.md | ✓ 3/3 |
+| 15 | 15-01 | Q&A frontend: overview page with question list, detail page with answer/reply hierarchy, profiles JOIN | app/qa/page.tsx, app/qa/vraag/[id]/page.tsx, lib/qa/queries.ts, lib/qa/types.ts | ✓ 3/3 |
 
 ## Session Continuity
 
-Last session: 2026-02-10T17:13:43Z
-Stopped at: Completed Phase 14 - Q&A API (14-01-PLAN.md, all tasks done, verified)
+Last session: 2026-02-10T18:08:58Z
+Stopped at: Completed Phase 15 - Q&A Frontend (15-01-PLAN.md, all tasks done, verified)
 Resume file: None
