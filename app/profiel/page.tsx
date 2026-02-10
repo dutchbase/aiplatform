@@ -6,6 +6,9 @@ import { ProfileForm } from './profile-form'
 export const metadata: Metadata = {
   title: 'Mijn profiel',
   description: 'Bekijk en bewerk je profiel op de AI Assistenten Hub.',
+  alternates: {
+    canonical: '/profiel',
+  },
 }
 
 export default async function ProfielPage() {

@@ -4,6 +4,9 @@ import { login, signup } from './actions'
 export const metadata: Metadata = {
   title: 'Inloggen',
   description: 'Log in of maak een account aan voor de AI Assistenten Hub.',
+  alternates: {
+    canonical: '/login',
+  },
 }
 
 export default function LoginPage({
