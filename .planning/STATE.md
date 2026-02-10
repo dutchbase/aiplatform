@@ -2,12 +2,12 @@
 
 ## Current Position
 
-Phase: 7 of 25 (SEO Basis) - COMPLETE
-Plan: 2 of 2 (in phase)
-Status: Phase complete
-Last activity: 2026-02-10 - Completed 07-02-PLAN.md
+Phase: 8 of 25 (Sitemap & Robots) - In progress
+Plan: 1 of 1 (in phase)
+Status: In progress
+Last activity: 2026-02-10 - Completed 08-01-PLAN.md
 
-Progress: [========---------------------] 32% (8/25 phases complete)
+Progress: [=========--------------------] 36% (9/25 phases complete)
 
 ## Accumulated Decisions
 
@@ -48,6 +48,9 @@ Progress: [========---------------------] 32% (8/25 phases complete)
 | 06-02-D1 | 06 | Navigation order prioritizes OpenClaw then broader categories | OpenClaw primary focus per PRD, followed by broader categories (AI Assistenten, Q&A, Blog, Kennisbank) |
 | 07-01-D1 | 07 | No openGraph on child pages - inherited from root layout | Avoids duplication and potential conflicts, root layout openGraph applies automatically |
 | 07-01-D2 | 07 | Blog slug title capitalization: split/capitalize pattern | Produces readable titles (e.g. "Mijn Blog Artikel") from URL slugs ("mijn-blog-artikel") |
+| 08-01-D1 | 08 | Sitemap includes all 14 live routes (Phase 06 already complete) | Sitemap reflects actual routes; will expand with dynamic content in later phases |
+| 08-01-D2 | 08 | Login page included in sitemap at priority 0.3 | Low priority signals minor importance; aids discovery |
+| 08-01-D3 | 08 | Dynamic routes excluded from sitemap (no data yet) | Will expand when blog/qa/tutorial content is available |
 
 ## Blockers / Concerns
 
@@ -68,9 +71,10 @@ None.
 | 06 | 06-02 | Header navigation with complete site structure | components/layout/header.tsx | ✓ 9/9 |
 | 07 | 07-01 | SEO metadata on all 15 route pages with unique Dutch titles and descriptions | app/openclaw/, app/ai-assistenten/, app/qa/, app/blog/, app/kennisbank/ | ✓ 10/10 |
 | 07 | 07-02 | SEO documentation in docs/seo.md and CHANGELOG updated for Phase 7 completion | docs/seo.md, docs/CHANGELOG.md | ✓ 2/2 |
+| 08 | 08-01 | Dynamic sitemap (14 URLs), robots.txt, canonical URLs on 3 pages | app/sitemap.ts, app/robots.ts, app/page.tsx, app/login/page.tsx, app/profiel/page.tsx | ✓ 3/3 |
 
 ## Session Continuity
 
-Last session: 2026-02-10T07:07:07Z
-Stopped at: Completed 07-02-PLAN.md (Phase 7 complete - both plans done)
+Last session: 2026-02-10T07:41:09Z
+Stopped at: Completed 08-01-PLAN.md (Phase 8 plan 1 done)
 Resume file: None
