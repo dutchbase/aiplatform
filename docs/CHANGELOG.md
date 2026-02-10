@@ -7,6 +7,31 @@ en dit project volgt [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
+## [Phase 11] - 2026-02-10 - Blog & Nieuws
+
+### Added
+- **`lib/data/blog.ts`** — BlogPost TypeScript interface, 3 seed articles, `getBlogPost()` helper function
+- **Blog overview page** (`/blog`) — article cards with title, Dutch-formatted publish date, excerpt, and link to detail
+- **Blog detail page** (`/blog/[slug]`) — full article with intro, sections, publishedAt, optional updatedAt; redirect for unknown slugs
+- **`docs/blog.md`** — documents static data source choice and instructions for adding new posts
+
+### Technical Details
+- Static data module pattern from Phase 10 (lib/data/tutorials.ts) applied to blog
+- `generateStaticParams` for SSG on detail pages
+- `generateMetadata` uses real article title and excerpt (replaces slug-derived placeholder from Phase 7)
+- `redirect('/blog')` on unknown slugs (consistent with tutorials redirect pattern)
+- `updatedAt` conditionally rendered only when present and different from `publishedAt`
+- BlogPost array kept sorted newest-first in data file
+
+### Files Modified
+- `lib/data/blog.ts` — Created
+- `app/blog/page.tsx` — Replaced placeholder with data-driven overview
+- `app/blog/[slug]/page.tsx` — Replaced placeholder with full detail implementation
+- `docs/blog.md` — Created
+- `docs/CHANGELOG.md` — This file
+
+---
+
 ## [Phase 7] - 2026-02-10 - SEO Basis
 
 ### Added
