@@ -5,6 +5,7 @@ export type Question = {
   body: string
   created_at: string
   updated_at: string
+  profiles: { display_name: string | null } | null
 }
 
 export type Answer = {
@@ -14,6 +15,7 @@ export type Answer = {
   body: string
   created_at: string
   updated_at: string
+  profiles: { display_name: string | null } | null
 }
 
 export type AnswerReply = {
@@ -23,6 +25,7 @@ export type AnswerReply = {
   body: string
   created_at: string
   updated_at: string
+  profiles: { display_name: string | null } | null
 }
 
 export type CreateQuestionInput = {

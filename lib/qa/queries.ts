@@ -5,7 +5,7 @@ export async function getQuestions(limit = 20): Promise<Question[]> {
   const supabase = await createClient()
   const { data, error } = await supabase
     .from('questions')
-    .select('*')
+    .select('*, profiles(display_name)')
     .order('created_at', { ascending: false })
     .limit(limit)
 
@@ -17,7 +17,7 @@ export async function getQuestionById(id: string): Promise<Question | null> {
   const supabase = await createClient()
   const { data, error } = await supabase
     .from('questions')
-    .select('*')
+    .select('*, profiles(display_name)')
     .eq('id', id)
     .single()
 
@@ -32,7 +32,7 @@ export async function getAnswersByQuestionId(questionId: string): Promise<Answer
   const supabase = await createClient()
   const { data, error } = await supabase
     .from('answers')
-    .select('*')
+    .select('*, profiles(display_name)')
     .eq('question_id', questionId)
     .order('created_at', { ascending: true })
 
@@ -44,7 +44,7 @@ export async function getRepliesByAnswerId(answerId: string): Promise<AnswerRepl
   const supabase = await createClient()
   const { data, error } = await supabase
     .from('answer_replies')
-    .select('*')
+    .select('*, profiles(display_name)')
     .eq('answer_id', answerId)
     .order('created_at', { ascending: true })
 
