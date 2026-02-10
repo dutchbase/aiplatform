@@ -1,30 +1,109 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
+import { redirect } from 'next/navigation'
+import { Button } from '@/components/ui/button'
+import { OpenClawNav } from '@/components/openclaw/openclaw-nav'
+import { tutorials } from '@/lib/data/tutorials'
 
 type Props = {
   params: Promise<{ slug: string }>
 }
 
+export async function generateStaticParams() {
+  return tutorials.map((tutorial) => ({
+    slug: tutorial.slug,
+  }))
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
+  const tutorial = tutorials.find((t) => t.slug === slug)
+
+  if (!tutorial) {
+    return {
+      title: 'Tutorial niet gevonden',
+    }
+  }
 
   return {
-    title: `OpenClaw Tutorial: ${slug}`,
-    description: `Leer hoe je ${slug} gebruikt met OpenClaw in deze praktische tutorial.`,
+    title: `${tutorial.title} | AI Assistenten Hub`,
+    description: tutorial.description,
   }
 }
 
-export default async function OpenClawTutorialPage({ params }: Props) {
+function formatDate(dateString: string): string {
+  const date = new Date(dateString)
+  return date.toLocaleDateString('nl-NL', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  })
+}
+
+export default async function TutorialPage({ params }: Props) {
   const { slug } = await params
+  const tutorial = tutorials.find((t) => t.slug === slug)
+
+  if (!tutorial) {
+    redirect('/openclaw/tutorials')
+  }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-6 text-foreground">
-        OpenClaw Tutorial: {slug}
-      </h1>
-      <p className="text-lg text-muted-foreground">
-        Tutorial: {slug} komt binnenkort. Hier leert u alles over dit onderwerp
-        met praktische voorbeelden.
-      </p>
+    <div className="container py-12">
+      <div className="max-w-3xl mx-auto space-y-12">
+        {/* Breadcrumb */}
+        <nav aria-label="Kruimelpad" className="text-sm text-muted-foreground">
+          <ol className="flex items-center gap-2">
+            <li>
+              <Link href="/openclaw" className="hover:text-foreground transition-colors">
+                OpenClaw
+              </Link>
+            </li>
+            <li aria-hidden="true">/</li>
+            <li>
+              <Link href="/openclaw/tutorials" className="hover:text-foreground transition-colors">
+                Tutorials
+              </Link>
+            </li>
+            <li aria-hidden="true">/</li>
+            <li className="text-foreground font-medium" aria-current="page">
+              {tutorial.title}
+            </li>
+          </ol>
+        </nav>
+
+        {/* Tutorial header */}
+        <div>
+          <h1 className="text-4xl font-bold mb-3">{tutorial.title}</h1>
+          <OpenClawNav currentPath="/openclaw/tutorials" />
+          <p className="text-sm text-muted-foreground mb-4">
+            Laatst bijgewerkt: {formatDate(tutorial.lastUpdated)}
+          </p>
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            {tutorial.content.intro}
+          </p>
+        </div>
+
+        {/* Tutorial steps */}
+        <div className="space-y-8">
+          {tutorial.content.steps.map((step, index) => (
+            <section key={index}>
+              <h2 className="text-2xl font-semibold mb-3">{step.heading}</h2>
+              <p className="text-muted-foreground leading-relaxed">{step.content}</p>
+            </section>
+          ))}
+        </div>
+
+        {/* Footer CTA */}
+        <section className="border-t border-border pt-8">
+          <p className="text-muted-foreground mb-4">
+            Meer leren? Bekijk onze andere tutorials.
+          </p>
+          <Button asChild variant="secondary">
+            <Link href="/openclaw/tutorials">Terug naar overzicht</Link>
+          </Button>
+        </section>
+      </div>
     </div>
   )
 }
