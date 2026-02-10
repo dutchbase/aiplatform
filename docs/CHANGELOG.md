@@ -7,6 +7,25 @@ en dit project volgt [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
+## [Phase 17] - 2026-02-10 - Breadcrumbs en 404
+
+### Added
+- **Breadcrumbs component** (`components/ui/breadcrumbs.tsx`): herbruikbare Server Component die `items: Array<{ label: string; href?: string }>` accepteert; semantische `<nav aria-label="Breadcrumb">` met `<ol>`, laatste item heeft `aria-current="page"` en geen link
+- **Breadcrumbs op alle subsecties**: geïntegreerd op 10 pagina's — `/openclaw`, `/openclaw/installatie`, `/openclaw/tutorials`, `/openclaw/tutorials/[slug]`, `/blog`, `/blog/[slug]`, `/qa`, `/qa/vraag/[id]`, `/ai-assistenten`, `/kennisbank`
+- **404-pagina** (`app/not-found.tsx`): vriendelijke "Pagina niet gevonden" layout met links naar home, OpenClaw, Blog, Q&A en AI Assistenten
+
+### Changed
+- `app/openclaw/tutorials/[slug]/page.tsx`: inline `<nav aria-label="Kruimelpad">` vervangen door `<Breadcrumbs>` component
+- `app/blog/[slug]/page.tsx`: inline `<nav aria-label="Kruimelpad">` vervangen door `<Breadcrumbs>` component
+
+### Technical Details
+- Server Components throughout — geen 'use client'
+- Dynamische paginatitels in breadcrumbs: tutorial/blog/qa-detail pagina's gebruiken de opgehaalde inhoudstitel als laatste crumb
+- Separator `›` is `aria-hidden="true"` om schermlezer-ruis te vermijden
+- 404-pagina gebruikt Next.js built-in `not-found.tsx` mechanisme — geen client-side routing nodig
+
+---
+
 ## [Phase 16] - 2026-02-10 - Q&A Formulieren
 
 ### Added

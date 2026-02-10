@@ -235,4 +235,32 @@ Open Graph tags enable proper social sharing previews on platforms like Twitter,
 
 ---
 
-**Last Updated:** 2026-02-10 (Phase 7)
+## Breadcrumbs
+
+Added in Phase 17. A reusable `Breadcrumbs` Server Component at `components/ui/breadcrumbs.tsx`.
+
+**Usage:** Pass an array of `{ label: string; href?: string }` items. The last item (without `href`) renders as plain text with `aria-current="page"`. All preceding items render as `<Link>` elements.
+
+**Pages with breadcrumbs:**
+- `/openclaw` — "OpenClaw"
+- `/openclaw/installatie` — "OpenClaw › Installatie"
+- `/openclaw/tutorials` — "OpenClaw › Tutorials"
+- `/openclaw/tutorials/[slug]` — "OpenClaw › Tutorials › [Tutorial titel]"
+- `/blog` — "Blog"
+- `/blog/[slug]` — "Blog › [Artikel titel]"
+- `/qa` — "Q&A"
+- `/qa/vraag/[id]` — "Q&A › [Vraagtitel]"
+- `/ai-assistenten` — "AI Assistenten"
+- `/kennisbank` — "Kennisbank"
+
+Accessibility: `<nav aria-label="Breadcrumb">` with `<ol>` markup. Separator `›` is `aria-hidden="true"`.
+
+---
+
+## 404 Pagina
+
+`app/not-found.tsx` — Next.js renders this automatically for unmatched routes and when `notFound()` is called. Contains Dutch "Pagina niet gevonden" message, a "Terug naar home" button, and section links to OpenClaw, Blog, Q&A, AI Assistenten.
+
+---
+
+**Last Updated:** 2026-02-10 (Phase 17)
