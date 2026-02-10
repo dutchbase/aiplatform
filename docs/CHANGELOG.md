@@ -7,6 +7,24 @@ en dit project volgt [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
+## [Phase 18] - 2026-02-10 - Gestructureerde Data (JSON-LD)
+
+### Added
+- **Article JSON-LD** (`app/blog/[slug]/page.tsx`): Schema.org Article schema met headline, description, datePublished, dateModified en author (Organization: AI Assistenten Hub)
+- **Article JSON-LD** (`app/openclaw/tutorials/[slug]/page.tsx`): Schema.org Article schema met zelfde velden; datePublished en dateModified beide via `tutorial.lastUpdated`
+- **QAPage JSON-LD** (`app/qa/vraag/[id]/page.tsx`): Schema.org QAPage schema met mainEntity Question (name, text, answerCount, dateCreated) en suggestedAnswer items voor elk antwoord
+
+### Changed
+- `docs/seo.md`: Nieuwe sectie "Structured Data (JSON-LD)" toegevoegd met Article en QAPage schema-documentatie
+
+### Technical Details
+- JSON-LD via `<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}/>` in Server Components
+- Schema object gebouwd vlak voor de `return` statement, na alle data-ophaling
+- React Fragment wrapper (`<>...</>`) toegevoegd aan return in drie page components
+- Geen duplicate script-blokken: één JSON-LD block per pagina per type
+
+---
+
 ## [Phase 17] - 2026-02-10 - Breadcrumbs en 404
 
 ### Added
