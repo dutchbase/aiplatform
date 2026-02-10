@@ -2,12 +2,12 @@
 
 ## Current Position
 
-Phase: 18 of 25 (Structured Data) - COMPLETE (next: Phase 19)
+Phase: 19 of 25 (Eerste Content) - COMPLETE (next: Phase 20)
 Plan: 1 of 1 (in phase)
-Status: Phase 18 complete; Phases 19-20 planned, ready for execution
-Last activity: 2026-02-10 - Completed 18-01-PLAN.md (Article JSON-LD on blog/tutorials + QAPage JSON-LD on Q&A)
+Status: Phase 19 complete; Phase 20 (Interne Links) planned, ready for execution
+Last activity: 2026-02-10 - Completed 19-01-PLAN.md (installatie page full content + 3 tutorials expanded to 4 steps each)
 
-Progress: [==================-----------] 76% (19/25 phases complete)
+Progress: [===================----------] 80% (20/25 phases complete)
 
 ## Accumulated Decisions
 
@@ -114,9 +114,10 @@ None.
 | 16 | 16-01 | Q&A write forms: ask-question page, AskQuestionForm, AnswerForm, ReplyForm with auth gates | app/qa/nieuwe-vraag/page.tsx, components/qa/ask-question-form.tsx, components/qa/answer-form.tsx, components/qa/reply-form.tsx | ✓ 3/3 |
 | 17 | 17-01 | Breadcrumbs component + 404 not-found page integrated on 10 sub-pages | components/ui/breadcrumbs.tsx, app/not-found.tsx, 10 page files, docs/seo.md, docs/CHANGELOG.md | ✓ 3/3 |
 | 18 | 18-01 | Schema.org JSON-LD on blog detail (Article), tutorial detail (Article), and Q&A detail (QAPage) pages | app/blog/[slug]/page.tsx, app/openclaw/tutorials/[slug]/page.tsx, app/qa/vraag/[id]/page.tsx, docs/seo.md, docs/CHANGELOG.md | ✓ 3/3 |
+| 19 | 19-01 | Full Dutch editorial content for OpenClaw installation page and all 3 tutorials (4 steps each); no placeholders remain | app/openclaw/installatie/page.tsx, lib/data/tutorials.ts, docs/CHANGELOG.md | ✓ 6/6 |
 
 ## Session Continuity
 
-Last session: 2026-02-10T19:18:00Z
-Stopped at: Completed 18-01-PLAN.md (Article JSON-LD on blog/tutorials + QAPage JSON-LD on Q&A detail)
+Last session: 2026-02-10T20:09:00Z
+Stopped at: Completed 19-01-PLAN.md (installatie page full Dutch content + tutorials expanded to 4 steps each)
 Resume file: None
