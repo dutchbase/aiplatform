@@ -220,7 +220,7 @@ Plans:
 **Plans:** 1 plan
 
 Plans:
-- [ ] 15-01-PLAN.md — Q&A overview page, question detail page with answers and replies hierarchy
+- [x] 15-01-PLAN.md — Q&A overview page, question detail page with answers and replies hierarchy
 
 **Document:** [phase-15-qa-frontend.md](./phase-15-qa-frontend.md)
 
