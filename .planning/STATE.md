@@ -2,12 +2,12 @@
 
 ## Current Position
 
-Phase: 9 of 25 (OpenClaw Sectie) - COMPLETE
-Plan: 2 of 2 (in phase)
-Status: Phase complete
-Last activity: 2026-02-10 - Phase 9 verified and complete
+Phase: 10 of 25 (OpenClaw Tutorials) - In progress
+Plan: 1 of 1 (in phase, complete)
+Status: Plan 10-01 complete
+Last activity: 2026-02-10 - Completed 10-01-PLAN.md (tutorials data + overview + detail pages)
 
-Progress: [=========--------------------] 40% (10/25 phases complete)
+Progress: [==========-------------------] 44% (11/25 phases complete, 15/15 plans done)
 
 ## Accumulated Decisions
 
@@ -56,6 +56,10 @@ Progress: [=========--------------------] 40% (10/25 phases complete)
 | 09-02-D1 | 09 | Server Component for OpenClawNav using currentPath prop | Avoids 'use client' - Server-Components-first architecture maintained |
 | 09-02-D2 | 09 | Active tab uses -mb-px to create flush border indicator | Clean tab indicator without double-border visual artifact |
 | 09-02-D3 | 09 | Header unchanged - already correct for OpenClaw prominence | Task 3 was verification-only; href=/openclaw with label "OpenClaw" already in place |
+| 10-01-D1 | 10 | Static data module in lib/data/ for typed content | Separates data from presentation; makes Phase 19 content updates straightforward without CMS |
+| 10-01-D2 | 10 | generateStaticParams for SSG tutorial detail pages | Pre-renders 3 slug pages at build time - faster, no server round-trip needed |
+| 10-01-D3 | 10 | redirect() over notFound() for unknown slugs | Better UX - lands user on working page rather than 404 |
+| 10-01-D4 | 10 | OpenClawNav on tutorial detail pages too | Maintains section context for users navigating between tutorials and other OpenClaw sections |
 
 ## Blockers / Concerns
 
@@ -79,9 +83,10 @@ None.
 | 08 | 08-01 | Dynamic sitemap (14 URLs), robots.txt, canonical URLs on 3 pages | app/sitemap.ts, app/robots.ts, app/page.tsx, app/login/page.tsx, app/profiel/page.tsx | ✓ 3/3 |
 | 09 | 09-01 | OpenClaw overview page with 4-card navigation and installation guide with 3 sections | app/openclaw/page.tsx, app/openclaw/installatie/page.tsx | ✓ 9/9 |
 | 09 | 09-02 | OpenClawNav component with active states integrated into overview and installation pages | components/openclaw/openclaw-nav.tsx, app/openclaw/page.tsx, app/openclaw/installatie/page.tsx | ✓ 9/9 |
+| 10 | 10-01 | Tutorials data module + overview page + SSG detail pages with 3 slugs | lib/data/tutorials.ts, app/openclaw/tutorials/page.tsx, app/openclaw/tutorials/[slug]/page.tsx | pending |
 
 ## Session Continuity
 
-Last session: 2026-02-10T08:00:00Z
-Stopped at: Completed Phase 9 - OpenClaw Sectie (all plans done, verified 9/9)
+Last session: 2026-02-10T08:10:20Z
+Stopped at: Completed 10-01-PLAN.md - OpenClaw tutorials section (3 tasks, 3 commits)
 Resume file: None
