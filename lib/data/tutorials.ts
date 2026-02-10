@@ -24,19 +24,24 @@ export const tutorials: Tutorial[] = [
         'OpenClaw is ontworpen om developers direct productief te maken. In deze tutorial leer je de basishandelingen die je nodig hebt om aan de slag te gaan. We behandelen het opstarten van de assistent, het stellen van je eerste vraag en het genereren van code. Na het doorlopen van deze tutorial heb je een werkende setup en ben je klaar voor de meer gevorderde tutorials.',
       steps: [
         {
-          heading: 'OpenClaw starten',
+          heading: 'OpenClaw opstarten',
           content:
-            'Zodra OpenClaw geïnstalleerd is, start je de assistent op via de terminal of de geïntegreerde editor. OpenClaw herkent automatisch de context van je huidige project en past zijn antwoorden hierop aan. Zorg dat je werkmap correct is ingesteld voordat je begint.',
+            'Open een terminal in de map van je project en typ: openclaw start. OpenClaw analyseert automatisch de bestanden in je werkmap en laadt de projectcontext. Je ziet een bevestiging zodra de assistent gereed is, inclusief het aantal geïndexeerde bestanden. Zorg dat je werkmap de root van je project is — OpenClaw gebruikt package.json of een .openclaw-bestand als ankerpunt.',
         },
         {
           heading: 'Je eerste vraag stellen',
           content:
-            'Stel een concrete, gerichte vraag over je code of project. OpenClaw werkt het beste met specifieke vragen zoals "Hoe implementeer ik foutafhandeling in deze functie?" in plaats van vage verzoeken. De assistent analyseert je vraag en geeft een direct toepasbaar antwoord met uitleg.',
+            'Typ je vraag direct in de prompt die OpenClaw toont. Wees concreet: \'Wat doet de functie getUserById in src/lib/users.ts?\' werkt beter dan \'Leg mijn code uit.\' OpenClaw doorzoekt de geïndexeerde bestanden, vindt de relevante context en geeft een antwoord met verwijzing naar de betreffende regels. Je kunt ook een bestandspad meegeven: \'Analyseer @src/lib/users.ts\'.',
         },
         {
-          heading: 'Code genereren met OpenClaw',
+          heading: 'Code genereren',
           content:
-            'Vraag OpenClaw om code te genereren door je gewenste functionaliteit te beschrijven. Je kunt specificeren welke taal, framework of stijlvoorkeur je hanteert. OpenClaw past de gegenereerde code aan op basis van de bestaande codebase in je project.',
+            'Beschrijf de gewenste functionaliteit zo specifiek mogelijk. Gebruik aanwijzingen als \'in TypeScript\', \'gebruik de fetch API\', of \'schrijf een async functie\'. Voorbeeld: \'Schrijf een async TypeScript-functie die een gebruiker op ID ophaalt uit Supabase en undefined teruggeeft als de gebruiker niet bestaat.\' OpenClaw genereert de code en legt uit welke keuzes het heeft gemaakt.',
+        },
+        {
+          heading: 'Je sessie afsluiten en hervatten',
+          content:
+            'Type exit of druk op Ctrl+C om een sessie te beëindigen. OpenClaw slaat de gespreksgeschiedenis automatisch op in .openclaw/history. Bij de volgende start laad je een eerdere sessie via: openclaw start --resume. Dit is handig bij langere projecten waarbij je de context niet opnieuw wilt opbouwen.',
         },
       ],
     },
@@ -52,19 +57,24 @@ export const tutorials: Tutorial[] = [
         'Een goed geconfigureerde OpenClaw-installatie sluit naadloos aan op jouw persoonlijke workflow en projecteisen. In deze tutorial doorloop je de belangrijkste configuratieopties: van basis instellingen tot geavanceerde aanpassingen. Door OpenClaw correct in te stellen bespaar je tijd en krijg je betere, meer gerichte antwoorden. Na deze tutorial weet je hoe je de assistent optimaal instelt voor jouw specifieke gebruik.',
       steps: [
         {
-          heading: 'Basis instellingen',
+          heading: 'Het configuratiebestand aanmaken',
           content:
-            'De basis instellingen van OpenClaw bepalen hoe de assistent zich gedraagt in dagelijks gebruik. Je configureert hier je voorkeurstaal voor responses, het gewenste detailniveau van antwoorden en de standaard projectstructuur die OpenClaw aanneemt. Deze instellingen zijn te wijzigen via het configuratiebestand in de root van je project.',
+            'OpenClaw zoekt bij het opstarten naar een .openclaw.json bestand in de root van je project. Als dit bestand niet bestaat, werkt OpenClaw met standaardinstellingen. Maak het bestand aan via: openclaw init. Dit genereert een .openclaw.json met de meestgebruikte opties en hun standaardwaarden. Voeg .openclaw.json toe aan je versiebeheersysteem zodat je teamconfiguratie gedeeld wordt.',
         },
         {
-          heading: 'API keys configureren',
+          heading: 'API-sleutel instellen',
           content:
-            'OpenClaw maakt gebruik van externe AI-diensten die een API key vereisen. Sla je keys veilig op in een `.env`-bestand en verwijs hier vanuit de configuratie naar. Gebruik nooit je productie-API-keys in development omgevingen en commit nooit secrets naar versiebeheer.',
+            'OpenClaw heeft een API-sleutel nodig voor de onderliggende AI-dienst. Sla je sleutel op in een .env bestand: OPENCLAW_API_KEY=jouw-sleutel-hier. Verwijs vanuit .openclaw.json naar de omgevingsvariabele met: "apiKey": "${OPENCLAW_API_KEY}". Commit nooit je .env bestand naar Git — voeg het toe aan .gitignore. Je API-sleutel vind je in het dashboard van je OpenClaw-account.',
         },
         {
-          heading: 'Geavanceerde opties',
+          heading: 'Taal en responsegedrag instellen',
           content:
-            'Voor gevorderde gebruikers biedt OpenClaw uitgebreide configuratiemogelijkheden zoals aangepaste context-vensters, domeinspecifieke kennisbases en integraties met externe tools. Deze opties zijn beschikbaar via de geavanceerde sectie van het configuratiebestand en worden gedocumenteerd in de officiële handleiding.',
+            'Stel in .openclaw.json de voorkeurstaal in voor antwoorden: "language": "nl" voor Nederlands. Configureer ook het detailniveau met "verbosity": "concise" (kort), "normal" (standaard) of "detailed" (uitgebreid). Voor codegerelateerde vragen kun je het framework specificeren: "defaultStack": ["typescript", "nextjs", "supabase"]. OpenClaw past zijn antwoorden hierop aan zonder dat je dit telkens hoeft te herhalen.',
+        },
+        {
+          heading: 'Bestanden en mappen uitsluiten',
+          content:
+            'Gebruik de ignore-optie om mappen uit te sluiten van indexering: "ignore": ["node_modules", ".next", "dist", "coverage"]. Dit versnelt het opstarten en voorkomt dat OpenClaw irrelevante context gebruikt. Je kunt ook bestandspatronen opgeven zoals "**/*.test.ts". Een kleinere, relevante context leidt doorgaans tot betere en snellere antwoorden.',
         },
       ],
     },
@@ -82,22 +92,22 @@ export const tutorials: Tutorial[] = [
         {
           heading: 'Effectieve prompts schrijven',
           content:
-            'De kwaliteit van je prompt bepaalt grotendeels de kwaliteit van het antwoord. Wees specifiek over het gewenste resultaat, geef relevante context mee en geef aan welk formaat je verwacht. Gebruik zinnen als "Refactor deze functie zodat het..." of "Schrijf een test die controleert of..." voor de meest bruikbare resultaten.',
+            'De meest bruikbare prompts zijn concreet, context-rijk en actiegericht. Gebruik het patroon: [actie] + [onderwerp] + [beperking of gewenst formaat]. Slecht: \'fix dit\'. Goed: \'Refactor de functie parseUserInput in src/utils/parser.ts zodat deze een Result-type teruggeeft in plaats van een exception te gooien. Gebruik hetzelfde patroon als in src/utils/validator.ts.\' Door een referentiebestand te noemen, stuurt OpenClaw de stijl van het antwoord.',
         },
         {
-          heading: 'Gebruik van context',
+          heading: 'Context slim inzetten',
           content:
-            'OpenClaw werkt beter wanneer het de juiste context heeft. Verwijs expliciet naar bestanden, functies of concepten die relevant zijn voor je vraag. Je kunt meerdere bestanden als context meegeven, zodat OpenClaw het grotere plaatje begrijpt en consistente code genereert die aansluit bij je bestaande codebase.',
+            'OpenClaw indexeert je gehele project, maar jij bepaalt welke context actief is. Prefix een bestandspad met @ om het expliciet als context te markeren: \'@src/lib/auth.ts Controleer of deze functie gevoelig is voor session hijacking.\' Je kunt meerdere bestanden tegelijk markeren. Voor grote codebases helpt het om context te beperken tot de relevante module — dit geeft gerichte antwoorden en bespaart tokens.',
         },
         {
-          heading: 'Keyboard shortcuts',
+          heading: 'Veelgemaakte fouten vermijden',
           content:
-            'OpenClaw ondersteunt diverse sneltoetsen die je sessies aanzienlijk versnellen. De meestgebruikte combinaties zijn beschikbaar via de toetsenbordreferentie in de instellingen. Door sneltoetsen te leren voor veelgebruikte acties zoals context wisselen, sessies opslaan en commando\'s herhalen, verhoog je je productiviteit merkbaar.',
+            'De meest voorkomende valkuil is een te vage prompt waardoor OpenClaw een generiek antwoord geeft dat niet aansluit bij je codebase. Tweede fout: OpenClaw vragen om iets te \'repareren\' zonder de foutmelding mee te sturen. Voeg altijd de volledige foutmelding toe, inclusief stack trace. Derde fout: ervan uitgaan dat OpenClaw wijzigingen automatisch opslaat — het genereert altijd een voorstel dat jij beoordeelt en toepast.',
         },
         {
-          heading: 'Workflow optimalisatie',
+          heading: 'Workflow-integratie',
           content:
-            'Integreer OpenClaw structureel in je development workflow door het in te zetten bij vaste stappen: code review, documentatie genereren en testcases schrijven. Stel terugkerende taken in als sjablonen zodat je niet steeds dezelfde instructies hoeft te typen. Een consistente werkwijze leidt tot betere en voorspelbaardere resultaten.',
+            'Maak OpenClaw onderdeel van vaste stappen in je ontwikkelworkflow. Gebruik het bij code reviews: \'Beoordeel deze diff op mogelijke bugs en onveilige patronen.\' Gebruik het bij het schrijven van tests: \'Schrijf Jest-tests voor alle edge cases van de functie calculateDiscount.\' Gebruik het bij documentatie: \'Genereer een JSDoc-commentaarblok voor elke publieke functie in dit bestand.\' Door OpenClaw structureel in te zetten verhoog je de consistentie en kwaliteit van je code.',
         },
       ],
     },

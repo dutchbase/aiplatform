@@ -7,6 +7,24 @@ en dit project volgt [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
+## [Phase 19] - 2026-02-10 - Eerste Content
+
+### Toegevoegd
+- **Installatiepagina volledige inhoud** (`app/openclaw/installatie/page.tsx`): alle placeholder-notices vervangen door complete Nederlandstalige handleiding met vereisten (OS, software, versiecontrole), vijf genummerde installatiestappen met codeblokken, en verificatiesectie met verwachte uitvoer
+- **Publicatiedatum installatiepagina**: "Gepubliceerd op: 9 februari 2026" zichtbaar onder de intro
+- **Tutorial inhoud uitgebreid** (`lib/data/tutorials.ts`): alle drie tutorials (eerste-stappen, configuratie, tips) uitgebreid van 3 naar 4 stappen elk; concrete commando's, configuratievoorbeelden en best-practice-patronen toegevoegd
+
+### Gewijzigd
+- `lib/data/tutorials.ts`: content.steps uitgebreid voor alle drie tutorials; Tutorial-interface en slugs ongewijzigd
+- `app/openclaw/installatie/page.tsx`: placeholder-notices verwijderd; inhoud van drie secties volledig uitgewerkt; codeblokken toegevoegd met pre/code-elementen
+
+### Technical Details
+- Geen nieuwe dependencies — codeblokken via standaard HTML pre/code met Tailwind-classes
+- Server Components blijven onaangetast — geen 'use client' toegevoegd
+- generateStaticParams onaangetast — slugs ongewijzigd
+
+---
+
 ## [Phase 18] - 2026-02-10 - Gestructureerde Data (JSON-LD)
 
 ### Added
