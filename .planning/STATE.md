@@ -2,12 +2,12 @@
 
 ## Current Position
 
-Phase: 11 of 25 (Blog & Nieuws) - COMPLETE
+Phase: 12 of 25 (RSS Feed) - COMPLETE
 Plan: 1 of 1 (in phase)
 Status: Phase complete
-Last activity: 2026-02-10 - Completed 11-01-PLAN.md (Blog & Nieuws)
+Last activity: 2026-02-10 - Completed 12-01-PLAN.md (RSS Feed)
 
-Progress: [===========------------------] 48% (12/25 phases complete)
+Progress: [============-----------------] 52% (13/25 phases complete)
 
 ## Accumulated Decisions
 
@@ -64,6 +64,9 @@ Progress: [===========------------------] 48% (12/25 phases complete)
 | 11-01-D2 | 11 | blogPosts sorted newest-first in data definition | Single source of truth; no runtime sort calls needed on overview or detail |
 | 11-01-D3 | 11 | redirect('/blog') for unknown slugs (not 404) | Consistent with Phase 10 tutorials pattern; better UX than error page |
 | 11-01-D4 | 11 | updatedAt conditional on both presence and difference from publishedAt | Avoids showing redundant "updated" date when content hasn't changed |
+| 12-01-D1 | 12 | Native Response constructor (not NextResponse) for RSS Route Handler | Works correctly for non-JSON content types; no next/server import needed |
+| 12-01-D2 | 12 | Use post.excerpt field (BlogPost uses excerpt, not description) | Matches actual BlogPost interface field name from lib/data/blog.ts |
+| 12-01-D3 | 12 | Production domain as NEXT_PUBLIC_BASE_URL fallback (not localhost) | Committed feed XML references real domain; localhost would be wrong in production |
 
 ## Blockers / Concerns
 
@@ -89,9 +92,10 @@ None.
 | 09 | 09-02 | OpenClawNav component with active states integrated into overview and installation pages | components/openclaw/openclaw-nav.tsx, app/openclaw/page.tsx, app/openclaw/installatie/page.tsx | ✓ 9/9 |
 | 10 | 10-01 | Tutorials data module + overview page + SSG detail pages with 3 slugs | lib/data/tutorials.ts, app/openclaw/tutorials/page.tsx, app/openclaw/tutorials/[slug]/page.tsx | ✓ 6/6 |
 | 11 | 11-01 | Blog data module + overview cards + SSG detail pages with 3 slugs | lib/data/blog.ts, app/blog/page.tsx, app/blog/[slug]/page.tsx, docs/blog.md | ✓ 9/9 |
+| 12 | 12-01 | RSS 2.0 feed at /feed.xml + alternate link in root layout + docs | app/feed.xml/route.ts, app/layout.tsx, docs/rss.md | ✓ 2/2 |
 
 ## Session Continuity
 
-Last session: 2026-02-10T15:58:03Z
-Stopped at: Completed Phase 11 - Blog & Nieuws (11-01-PLAN.md, all tasks done, verified 9/9)
+Last session: 2026-02-10T16:10:00Z
+Stopped at: Completed Phase 12 - RSS Feed (12-01-PLAN.md, all tasks done, verified build)
 Resume file: None
