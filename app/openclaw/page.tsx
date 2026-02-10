@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
+import { OpenClawNav } from '@/components/openclaw/openclaw-nav'
 
 export const metadata: Metadata = {
   title: 'OpenClaw – AI Assistent voor Developers | AI Assistenten Hub',
@@ -13,7 +14,7 @@ export default function OpenClawPage() {
     <div className="container py-12">
       <div className="max-w-4xl mx-auto">
         {/* Hero section */}
-        <div className="mb-12">
+        <div className="mb-8">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
             OpenClaw – Je AI-Assistent voor Development
           </h1>
@@ -25,6 +26,8 @@ export default function OpenClawPage() {
             oplossingen die je direct kunt toepassen in je projecten.
           </p>
         </div>
+
+        <OpenClawNav currentPath="/openclaw" />
 
         {/* Navigation grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">

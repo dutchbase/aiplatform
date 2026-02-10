@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
+import { OpenClawNav } from '@/components/openclaw/openclaw-nav'
 
 export const metadata: Metadata = {
   title: 'OpenClaw Installatie – Stap voor Stap | AI Assistenten Hub',
@@ -15,6 +16,7 @@ export default function OpenClawInstallatiePage() {
         {/* Page header */}
         <div>
           <h1 className="text-4xl font-bold mb-4">OpenClaw Installatie</h1>
+          <OpenClawNav currentPath="/openclaw/installatie" />
           <p className="text-lg text-muted-foreground leading-relaxed">
             In deze handleiding installeer en configureer je OpenClaw op je eigen systeem.
             Plan ongeveer 15 minuten voor de volledige setup. Je hebt een werkende
