@@ -311,7 +311,13 @@ Plans:
 
 ## Fase 25 – MVP-afronding
 
-- [ ] **25 – MVP-afronding** — Laatste checks, documentatie compleet, README, release.
+**Goal:** Final check and MVP finalization: all PRD 11.1 must-haves verified, documentation complete, README and changelog updated, release recorded.
+
+**Plans:** 2 plans
+
+Plans:
+- [ ] 25-01-PLAN.md — MVP checklist (codebase verification), README update, production sign-off checkpoint
+- [ ] 25-02-PLAN.md — CHANGELOG MVP release entry, git commit and tag v1.0.0-mvp
 
 **Document:** [phase-25-mvp-afronding.md](./phase-25-mvp-afronding.md)
 
