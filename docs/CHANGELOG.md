@@ -7,6 +7,39 @@ en dit project volgt [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
+## Phase 22 — Deploy & CI/CD
+
+### Toegevoegd
+- GitHub Actions CI workflow (`.github/workflows/ci.yml`): lint + build op elke push naar main en pull requests
+- `docs/deployment.md`: volledige documentatie voor Vercel-deployment, benodigde omgevingsvariabelen en CI-uitleg
+- `.env.example` bijgewerkt met verbeterde commentaar en verwijzing naar deployment docs
+
+### Gewijzigd
+- `.env.example`: verbeterde toelichting bij `NEXT_PUBLIC_BASE_URL` voor productie-gebruik
+
+---
+
+## Phase 21 — Moderatie Basis (2026-02-11)
+
+### Toegevoegd
+- **Rapporteer-knop** op vragen en antwoorden in de Q&A-sectie (alleen voor ingelogde gebruikers)
+- **`reports` tabel** met RLS: authenticated INSERT, moderator/admin SELECT; CHECK constraint dwingt af dat exact één van question_id/answer_id is ingevuld
+- **Moderatiepagina** (`/moderatie`): server-side rolcontrole, read-only lijst van alle rapporten met link naar gemeld bericht, reden, en datum
+- **Server Action `createReport`** in `app/qa/actions.ts` met auth check, UUID validatie, en reden-allowlist
+- **Documentatie**: `docs/moderatie.md` (moderatiesysteem), `docs/database-schema.md` uitgebreid met reports tabel
+
+### Bestanden
+- Nieuw: `supabase/migrations/00003_reports.sql`
+- Nieuw: `components/qa/report-form.tsx`
+- Nieuw: `app/moderatie/page.tsx`
+- Nieuw: `docs/moderatie.md`
+- Aangepast: `lib/qa/types.ts` (Report, CreateReportInput types)
+- Aangepast: `app/qa/actions.ts` (createReport action)
+- Aangepast: `app/qa/vraag/[id]/page.tsx` (ReportForm integratie)
+- Aangepast: `docs/database-schema.md` (reports tabel documentatie)
+
+---
+
 ## [Phase 20] - 2026-02-10 - Interne Links
 
 ### Added

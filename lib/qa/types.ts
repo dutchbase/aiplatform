@@ -42,3 +42,18 @@ export type CreateReplyInput = {
   answer_id: string
   body: string
 }
+
+export type Report = {
+  id: string
+  question_id: string | null
+  answer_id: string | null
+  user_id: string
+  reason: string
+  created_at: string
+}
+
+export type CreateReportInput = {
+  question_id?: string
+  answer_id?: string
+  reason: string
+}

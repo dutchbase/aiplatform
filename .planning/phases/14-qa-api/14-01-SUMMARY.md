@@ -82,7 +82,7 @@ Each task was committed atomically:
 2. **Task 2: Server Actions for Q&A mutations** - `32794a2` (feat)
 3. **Task 3: Documentation and changelog** - `0be1b70` (docs)
 
-**Plan metadata:** (pending final commit)
+**Plan metadata:** `3b45da9` (docs: complete qa-api plan)
 
 ## Files Created/Modified
 - `lib/qa/types.ts` - Question, Answer, AnswerReply, CreateQuestionInput, CreateAnswerInput, CreateReplyInput types

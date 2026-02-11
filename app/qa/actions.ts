@@ -2,7 +2,7 @@
 
 import { revalidatePath } from 'next/cache'
 import { createClient } from '@/lib/supabase/server'
-import type { CreateQuestionInput, CreateAnswerInput, CreateReplyInput } from '@/lib/qa/types'
+import type { CreateQuestionInput, CreateAnswerInput, CreateReplyInput, CreateReportInput } from '@/lib/qa/types'
 
 export async function createQuestion(
   formData: FormData
@@ -109,4 +109,57 @@ export async function createReply(
 
   revalidatePath('/qa')
   return { id: (data as { id: string }).id }
+}
+
+export async function createReport(
+  formData: FormData
+): Promise<{ error?: string }> {
+  const supabase = await createClient()
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
+  if (!user) return { error: 'Niet ingelogd' }
+
+  const question_id = (formData.get('question_id') as string | null) || undefined
+  const answer_id = (formData.get('answer_id') as string | null) || undefined
+  const reason = (formData.get('reason') as string | null) ?? ''
+
+  const uuidRegex =
+    /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
+
+  if (!question_id && !answer_id) {
+    return { error: 'Ongeldig rapport: geen bericht opgegeven' }
+  }
+  if (question_id && !uuidRegex.test(question_id)) {
+    return { error: 'Ongeldig vraag-ID' }
+  }
+  if (answer_id && !uuidRegex.test(answer_id)) {
+    return { error: 'Ongeldig antwoord-ID' }
+  }
+  if (!reason.trim()) {
+    return { error: 'Geef een reden op' }
+  }
+
+  const validReasons = ['spam', 'ongewenste inhoud', 'onjuiste informatie', 'anders']
+  if (!validReasons.includes(reason.trim())) {
+    return { error: 'Ongeldige reden' }
+  }
+
+  const input: CreateReportInput = { reason: reason.trim() }
+  if (question_id) input.question_id = question_id
+  if (answer_id) input.answer_id = answer_id
+
+  const { error } = await supabase
+    .from('reports')
+    .insert({
+      user_id: user.id,
+      question_id: input.question_id ?? null,
+      answer_id: input.answer_id ?? null,
+      reason: input.reason,
+    })
+
+  if (error) return { error: 'Er is iets misgegaan. Probeer het opnieuw.' }
+
+  return {}
 }

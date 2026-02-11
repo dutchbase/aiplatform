@@ -168,17 +168,56 @@ Alle drie Q&A-tabellen volgen hetzelfde RLS-patroon:
 
 ---
 
+---
+
+## Moderatie Tabellen
+
+Aangemaakt in Phase 21. Ondersteunt de rapportage- en moderatiefunctionaliteit.
+
+### `reports` tabel
+
+| Kolom | Type | Nullable | Default | Beschrijving |
+|-------|------|----------|---------|--------------|
+| `id` | `uuid` | NOT NULL | `gen_random_uuid()` | Primary key |
+| `question_id` | `uuid` | NULL | - | Foreign key naar `public.questions(id)`, cascade delete. Null als het rapport een antwoord betreft. |
+| `answer_id` | `uuid` | NULL | - | Foreign key naar `public.answers(id)`, cascade delete. Null als het rapport een vraag betreft. |
+| `user_id` | `uuid` | NOT NULL | - | Foreign key naar `auth.users(id)`, cascade delete. Gebruiker die het rapport heeft ingediend. |
+| `reason` | `text` | NOT NULL | - | Reden voor het rapport: `spam`, `ongewenste inhoud`, `onjuiste informatie`, of `anders`. |
+| `created_at` | `timestamptz` | NOT NULL | `now()` | Tijdstip van aanmaken. |
+
+**Beperkingen:**
+- `reports_target_check`: CHECK constraint die afdwingt dat precies één van `question_id` of `answer_id` is ingevuld (nooit allebei null, nooit allebei ingevuld).
+- Geen `updated_at` kolom: rapporten worden alleen toegevoegd, nooit gewijzigd.
+
+### Reports RLS Policies
+
+| Policy | Operatie | Rol | Voorwaarde | Beschrijving |
+|--------|----------|-----|------------|--------------|
+| **Authenticated users can insert reports** | INSERT | `authenticated` | `user_id = (select auth.uid())` | Ingelogde gebruikers kunnen een rapport indienen |
+| **Moderators and admins can view reports** | SELECT | `authenticated` | `exists (select from profiles where role in ('moderator','admin'))` | Alleen moderators en admins kunnen rapporten inzien |
+
+### Reports Indexes
+
+| Index | Tabel | Kolom | Doel |
+|-------|-------|-------|------|
+| `idx_reports_question_id` | `reports` | `question_id` WHERE NOT NULL | Rapporten per vraag opzoeken |
+| `idx_reports_answer_id` | `reports` | `answer_id` WHERE NOT NULL | Rapporten per antwoord opzoeken |
+| `idx_reports_user_id` | `reports` | `user_id` | Rapporten per gebruiker opzoeken |
+| `idx_reports_created_at` | `reports` | `created_at DESC` | Sorteren op nieuwste rapporten |
+
+---
+
 ## Toekomstige uitbreidingen
 
 In latere fasen van het project worden de volgende tabellen toegevoegd:
 
 - **Content tabellen:** `blog_posts`, `tutorials`, `ai_tools`
-- **Moderatie tabellen:** `moderation_queue`, `moderation_actions`
+- **Moderatie tabellen:** `reports` (Phase 21, geïmplementeerd) — `moderation_actions` (toekomstig)
 
 **Drizzle ORM:** Op termijn kan Drizzle ORM worden geïntroduceerd voor type-safe database queries en complexere relaties. Voorlopig wordt de Supabase client gebruikt voor database-interacties.
 
 ---
 
-**Laatst bijgewerkt:** 2026-02-10
+**Laatst bijgewerkt:** 2026-02-11
 **Fase:** 13 - Q&A Datamodel
-**Migratie versie:** 00002
+**Migratie versie:** 00003

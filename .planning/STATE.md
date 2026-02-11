@@ -2,12 +2,12 @@
 
 ## Current Position
 
-Phase: 20 of 25 (Interne Links) - COMPLETE (next: Phase 21)
-Plan: 1 of 1 (in phase)
-Status: Phase 20 complete; Phase 21 (Moderatie Basis) planned, ready for execution
-Last activity: 2026-02-10 - Completed 20-01-PLAN.md (RelatedContent component, related.ts utility, blog/tutorial/qa/installatie cross-links)
+Phase: 21 of 25 (Moderatie Basis) - COMPLETE (next: Phase 22)
+Plan: 2 of 2 (in phase)
+Status: Phase 21 complete; Phase 22 (Deploy & CI/CD) is next
+Last activity: 2026-02-11 - Completed 21-02-PLAN.md (ReportForm component, Q&A page integration, /moderatie queue, docs/moderatie.md, CHANGELOG)
 
-Progress: [====================----------] 84% (21/25 phases complete)
+Progress: [=====================---------] 88% (22/25 phases complete)
 
 ## Accumulated Decisions
 
@@ -119,9 +119,11 @@ None.
 | 18 | 18-01 | Schema.org JSON-LD on blog detail (Article), tutorial detail (Article), and Q&A detail (QAPage) pages | app/blog/[slug]/page.tsx, app/openclaw/tutorials/[slug]/page.tsx, app/qa/vraag/[id]/page.tsx, docs/seo.md, docs/CHANGELOG.md | ✓ 3/3 |
 | 19 | 19-01 | Full Dutch editorial content for OpenClaw installation page and all 3 tutorials (4 steps each); no placeholders remain | app/openclaw/installatie/page.tsx, lib/data/tutorials.ts, docs/CHANGELOG.md | ✓ 6/6 |
 | 20 | 20-01 | Internal linking: RelatedContent Server Component + related.ts utilities + cross-links on blog/tutorial/qa/installatie pages | lib/data/related.ts, components/shared/related-content.tsx, 4 page files, docs/CHANGELOG.md | ✓ 7/7 |
+| 21 | 21-01 | Reports table migration + Report/CreateReportInput types + createReport Server Action + database docs | supabase/migrations/00003_reports.sql, lib/qa/types.ts, app/qa/actions.ts, docs/database-schema.md | ✓ 5/5 |
+| 21 | 21-02 | ReportForm Client Component + Q&A detail page integration + /moderatie moderator queue + moderation docs | components/qa/report-form.tsx, app/qa/vraag/[id]/page.tsx, app/moderatie/page.tsx, docs/moderatie.md, docs/CHANGELOG.md | ✓ 7/7 |
 
 ## Session Continuity
 
-Last session: 2026-02-10T20:17:00Z
-Stopped at: Completed 20-01-PLAN.md (RelatedContent component, related.ts utility, blog/tutorial/qa/installatie cross-links)
+Last session: 2026-02-11T00:00:00Z
+Stopped at: Completed Phase 21 (21-01 + 21-02): reports table, createReport action, ReportForm component, /moderatie queue, moderation docs
 Resume file: None

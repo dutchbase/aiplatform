@@ -5,6 +5,7 @@ import { createClient } from '@/lib/supabase/server'
 import { getQuestionById, getAnswersByQuestionId, getRepliesByAnswerId } from '@/lib/qa/queries'
 import { AnswerForm } from '@/components/qa/answer-form'
 import { ReplyForm } from '@/components/qa/reply-form'
+import { ReportForm } from '@/components/qa/report-form'
 import { Breadcrumbs } from '@/components/ui/breadcrumbs'
 
 type Props = { params: Promise<{ id: string }> }
@@ -78,6 +79,7 @@ export default async function QAVraagPage({ params }: Props) {
           Door {question.profiles?.display_name ?? 'Gebruiker'} &middot;{' '}
           {new Date(question.created_at).toLocaleDateString('nl-NL')}
         </p>
+        {user && <ReportForm questionId={question.id} />}
       </div>
 
       {/* Answers */}
@@ -96,6 +98,7 @@ export default async function QAVraagPage({ params }: Props) {
                   Door {answer.profiles?.display_name ?? 'Gebruiker'} &middot;{' '}
                   {new Date(answer.created_at).toLocaleDateString('nl-NL')}
                 </p>
+                {user && <ReportForm answerId={answer.id} />}
 
                 {/* Replies */}
                 {answer.replies.length > 0 && (

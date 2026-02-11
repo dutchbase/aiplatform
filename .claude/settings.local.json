@@ -7,7 +7,8 @@
       "Bash(timeout 15 npm run dev)",
       "Bash(exit 0)",
       "Bash(git init:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nchore\\(phase-0\\): project setup – structure, dependencies, .env.example, README\n\nFase 0: Projectsetup voltooid\n\n- Created directory structure: app/, components/, lib/, public/, docs/\n- Initialized Next.js 14+ with App Router and TypeScript strict mode\n- Added locked dependencies: Next.js 14.2.16, React 18.3.1, Supabase 2.46.1\n- Configured Tailwind CSS and PostCSS\n- Created .env.example with Supabase variables\n- Updated README.md with local development instructions\n- Added docs/project-structure.md with full architecture documentation\n- Added docs/CHANGELOG.md with Phase 0 entry\n- Verified npm install and npm run dev work successfully\n\nCo-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>\nEOF\n\\)\")"
     ]
   }
 }
