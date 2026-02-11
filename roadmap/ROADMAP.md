@@ -281,7 +281,13 @@ Plans:
 
 ## Fase 22 – Deploy & CI/CD
 
-- [ ] **22 – Deploy & CI/CD** — Vercel-deploy, productie-env, CI (lint/test) bij push.
+**Goal:** App runs in production on Vercel; production environment variables configured; pushes to main automatically deploy; CI runs lint and build on every push and PR.
+
+**Plans:** 2 plans
+
+Plans:
+- [ ] 22-01-PLAN.md — GitHub Actions CI workflow, docs/deployment.md, .env.example update, CHANGELOG
+- [ ] 22-02-PLAN.md — Vercel deployment: connect repo, set production env vars, verify live site
 
 **Document:** [phase-22-deploy-cicd.md](./phase-22-deploy-cicd.md)
 
@@ -311,7 +317,7 @@ Plans:
 
 ---
 
-## Na MVP (niet in deze roadmap uitgewerkt)
+## Na MVP (niet in deze roadmap-iteraties opgedeeld)
 
 - **Fase 2 (PRD):** Meer tools (Cursor, Claude Code), AI-bots, ads, zoek, nieuwsbrief.
 - **Fase 3 (PRD):** Premium content, API, managed AI-diensten.
