@@ -12,7 +12,19 @@ const NAV_ITEMS = [
 
 export async function Header() {
   const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
+
+  let profile: { role: string } | null = null
+  if (user) {
+    const { data } = await supabase
+      .from('profiles')
+      .select('role')
+      .eq('id', user.id)
+      .single()
+    profile = data
+  }
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -34,6 +46,14 @@ export async function Header() {
         <div className="ml-auto flex items-center space-x-4">
           {user ? (
             <>
+              {profile?.role === 'admin' && (
+                <Link
+                  href="/admin"
+                  className="text-sm text-foreground/60 hover:text-foreground/80 transition-colors"
+                >
+                  Admin
+                </Link>
+              )}
               <Link
                 href="/profiel"
                 className="text-sm text-foreground/60 hover:text-foreground/80 transition-colors"

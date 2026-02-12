@@ -7,6 +7,21 @@ en dit project volgt [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
+## [Phase 26] - 2026-02-12 - Admin Dashboard: Basis & Gebruikersbeheer
+
+### Toegevoegd
+- `lib/supabase/admin.ts` – service-role Supabase client (server-only, bypasses RLS)
+- `app/admin/layout.tsx` – admin-only layout guard; redirect naar `/login` als niet ingelogd, redirect naar `/` als geen admin
+- `app/admin/page.tsx` – dashboard homepage met 4 navigatiekaarten (Gebruikers, Moderatie, Inhoudsbeheer, Statistieken)
+- `app/admin/gebruikers/page.tsx` – gepagineerde gebruikerslijst (50/pagina) via Supabase Admin API, inclusief e-mail, rol en aanmeldingsdatum
+- `app/admin/gebruikers/[id]/page.tsx` – gebruikersdetailpagina met vraag/antwoordaantallen, rolwijzigingsformulier en verwijderknop
+- `app/admin/gebruikers/actions.ts` – Server Actions `updateUserRole` en `deleteUser` met admin-verificatie en UUID-validatie
+
+### Gewijzigd
+- `components/layout/header.tsx` – "Admin" link zichtbaar voor gebruikers met `role === 'admin'`
+
+---
+
 ## [MVP Release] - 2026-02-12 - v1.0.0-mvp
 
 **Nederlandse AI Assistenten Hub is live.** Alle 25 fases zijn afgerond. Hieronder een samenvatting van wat er is gebouwd.
