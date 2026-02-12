@@ -7,6 +7,21 @@ en dit project volgt [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
+## [Phase 27] - 2026-02-12 - Admin Dashboard: Moderatie Acties
+
+### Toegevoegd
+- `supabase/migrations/00004_reports_resolution.sql` – voegt `status`, `resolved_by`, `resolved_at` toe aan `reports` tabel + UPDATE RLS policy voor moderators/admins + index op `status`
+- `app/moderatie/actions.ts` – Server Actions `resolveReport` (dismiss/resolve) en `deleteContent` (verwijder content + resolve rapport)
+- `app/admin/content/page.tsx` – gepagineerde Q&A inhoudbeheer pagina met zoekfunctie en verwijderknoppen
+- `app/admin/content/actions.ts` – Server Actions `adminDeleteQuestion` en `adminDeleteAnswer` met admin-verificatie
+
+### Gewijzigd
+- `lib/qa/types.ts` – `ReportStatus` type toegevoegd; `Report` interface uitgebreid met `status`, `resolved_by`, `resolved_at`
+- `app/moderatie/page.tsx` – tabs "Open" / "Afgehandeld", actieknoppen per rapport (sluit rapport / verwijder content), statusindicatoren
+- `docs/moderatie.md` – rapportworkflow gedocumenteerd
+
+---
+
 ## [Phase 26] - 2026-02-12 - Admin Dashboard: Basis & Gebruikersbeheer
 
 ### Toegevoegd

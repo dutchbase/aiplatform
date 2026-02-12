@@ -13,10 +13,32 @@ Het moderatiesysteem stelt gebruikers in staat om ongepaste content te rapporter
 - Rapporten worden opgeslagen in de `reports` tabel met reden en tijdstip
 - Moderators/admins kunnen alle rapporten inzien op `/moderatie`
 
-**Toekomstige uitbreidingen:**
-- Acties op rapporten (verbergen, gebruiker waarschuwen, afwijzen)
-- E-mailmeldingen bij nieuwe rapporten
-- Dashboard met statistieken
+**Uitbreidingen (Phase 27 — Moderatie Acties):**
+- Rapporten kunnen worden gesloten ("Sluit rapport" → status `dismissed`) of opgelost na verwijdering van content
+- Content (vraag of antwoord) kan worden verwijderd via "Verwijder content" (bypassed RLS via admin client)
+- Moderatiewachtrij heeft twee tabs: "Open" en "Afgehandeld"
+- Afgehandelde rapporten tonen de afrondingsdatum
+
+## Rapportworkflow (Phase 27+)
+
+Een rapport doorloopt de volgende statussen:
+
+```
+open → dismissed  (moderator sluit rapport zonder actie)
+open → resolved   (moderator verwijdert de gemelde content)
+```
+
+### Acties vanuit `/moderatie`
+
+| Actie | Server Action | Beschrijving |
+|-------|--------------|-------------|
+| Sluit rapport | `resolveReport(reportId, 'dismissed')` | Markeert rapport als afgehandeld zonder content te verwijderen |
+| Verwijder content | `deleteContent(reportId, contentType, contentId)` | Verwijdert content via service-role client + markeert rapport als resolved |
+
+### Vereisten
+- Alleen moderators en admins (`role IN ('moderator', 'admin')`) kunnen acties uitvoeren
+- Elke Server Action roept `verifyModerator()` aan voor authorisatie
+- `deleteContent` gebruikt `lib/supabase/admin.ts` (service-role) omdat content niet van de moderator hoeft te zijn
 
 ---
 

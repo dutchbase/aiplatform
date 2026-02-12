@@ -43,6 +43,8 @@ export type CreateReplyInput = {
   body: string
 }
 
+export type ReportStatus = 'open' | 'resolved' | 'dismissed'
+
 export type Report = {
   id: string
   question_id: string | null
@@ -50,6 +52,9 @@ export type Report = {
   user_id: string
   reason: string
   created_at: string
+  status: ReportStatus
+  resolved_by: string | null
+  resolved_at: string | null
 }
 
 export type CreateReportInput = {
