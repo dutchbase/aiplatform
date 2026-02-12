@@ -2,6 +2,8 @@
 
 **De centrale Nederlandstalige hub voor AI-assistenten** – met praktische kennis, eerlijke ervaringen en een Q&A-community. Het platform richt zich in de startfase op **OpenClaw**, maar is opgezet om eenvoudig uit te breiden naar andere tools (Cursor, Claude Code, enz.).
 
+> **Status:** MVP live — 25 fases afgerond (februari 2026)
+
 ---
 
 ## Wat is dit project?
@@ -92,7 +94,7 @@ Na elke fase: commit, changelog in `docs/CHANGELOG.md` bijwerken, documentatie i
 
 ### Vereisten
 
-- Node.js 18+ geïnstalleerd
+- Node.js 24+ geïnstalleerd
 - npm of yarn
 - Git
 
@@ -140,9 +142,15 @@ Na elke fase: commit, changelog in `docs/CHANGELOG.md` bijwerken, documentatie i
 
 | Document | Beschrijving |
 | -------- | ------------ |
-| [prd.md](prd.md) | Product Requirements Document – doel, doelgroepen, architectuur, MVP, KPI’s, risico’s |
+| [prd.md](prd.md) | Product Requirements Document – doel, doelgroepen, architectuur, MVP, KPI's, risico's |
 | [roadmap/ROADMAP.md](roadmap/ROADMAP.md) | Volledige roadmap met alle fases en links naar fase-documenten |
 | [docs/CHANGELOG.md](docs/CHANGELOG.md) | Wijzigingslogboek per fase/release |
+| [docs/database-schema.md](docs/database-schema.md) | Database schema, RLS policies en indexen (Supabase/Postgres) |
+| [docs/supabase-setup.md](docs/supabase-setup.md) | Supabase project setup en configuratie |
+| [docs/seo.md](docs/seo.md) | SEO-implementatie: metadata, sitemap, breadcrumbs, structured data |
+| [docs/blog.md](docs/blog.md) | Blog data-structuur en instructies voor nieuwe artikelen |
+| [docs/qa.md](docs/qa.md) | Q&A API-contract: server actions en query-functies |
+| [docs/rss.md](docs/rss.md) | RSS feed implementatie en configuratie |
 
 ---
 

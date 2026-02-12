@@ -7,6 +7,103 @@ en dit project volgt [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
+## [MVP Release] - 2026-02-12 - v1.0.0-mvp
+
+**Nederlandse AI Assistenten Hub is live.** Alle 25 fases zijn afgerond. Hieronder een samenvatting van wat er is gebouwd.
+
+### Wat is er live
+
+**Platform & Infrastructuur (Fases 1–5)**
+- Next.js 14 App Router applicatie met TypeScript strict mode en Tailwind CSS
+- Supabase backend: PostgreSQL database, Row Level Security, Auth
+- Gebruikersaccounts: registratie, inloggen, profiel, sessiebeheer
+
+**Navigatie & Design (Fases 2, 6)**
+- Responsievelayout met header, footer en navigatiecomponenten
+- Kebab-case URL-structuur (SEO-vriendelijk, Nederlandstalig)
+
+**SEO (Fases 7, 8, 17, 18)**
+- Metadata (title, description, Open Graph) op alle pagina's
+- XML sitemap (`/sitemap.xml`) en robots.txt (`/robots.txt`)
+- Breadcrumbs op alle subsecties
+- JSON-LD structured data (Article, QAPage) op content-pagina's
+
+**OpenClaw sectie (Fases 9, 10, 19)**
+- Volledige installatiehandleiding (`/openclaw/installatie`) met vereisten, stappen, verificatie
+- 3 tutorials met echte Nederlandstalige content: Eerste Stappen, Configuratie, Tips & Trucs
+- Overzichtspagina's, use cases en nieuws
+
+**Blog & RSS (Fases 11, 12)**
+- 3 gepubliceerde blogartikelen
+- RSS 2.0 feed op `/feed.xml`
+
+**Q&A platform (Fases 13–16)**
+- Database schema met questions, answers, answer_replies (RLS policies)
+- Server actions: createQuestion, createAnswer, createReply (met auth-check)
+- Q&A overzicht en detailpagina's met antwoord-threads
+- Formulieren: vraag stellen, antwoord geven, reageren (auth-gated)
+
+**Content & Links (Fases 19, 20)**
+- Alle pagina's voorzien van Nederlandstalige content (geen placeholders)
+- Interne linkstructuur: RelatedContent component, gerelateerde posts/tutorials, kruislinks
+
+**Productie (Fases 21–24)**
+- Moderatie-basis: rapporteermechanisme voor content
+- Deployment via Vercel met CI/CD
+- Monitoring en error tracking
+- Legal & compliance: privacybeleid, cookiebeleid, gebruiksvoorwaarden
+
+### Technische stack
+
+| Onderdeel | Keuze |
+|-----------|-------|
+| Framework | Next.js 14.2.16 (App Router) |
+| Taal | TypeScript 5.7.2 (strict mode) |
+| Styling | Tailwind CSS 3.4.17 |
+| Backend | Supabase (Auth + PostgreSQL + Storage) |
+| Hosting | Vercel |
+| Runtime | Node.js 24.12.0 |
+
+### Succescriteria MVP
+
+- [ ] Organisch verkeer ≥ 10.000 unieke bezoekers/maand (te meten na 6–12 maanden)
+- [ ] Min. 50 Q&A-vragen + antwoorden in eerste 3 maanden (community afhankelijk)
+- [ ] Alle kernpagina's geïndexeerd in Google (verwacht binnen 4–6 weken)
+- [ ] Gemiddeld > 3 min op tutorials (te meten via analytics)
+
+---
+
+## Phase 24 — Legal & Compliance
+
+### Toegevoegd
+- **Privacybeleid** (`app/privacy/page.tsx`): GDPR-compliant privacybeleid in het Nederlands op `/privacy`. Behandelt verantwoordelijke, gegevensverzameling, doeleinden, bewaartermijnen, rechten (inzage, rectificatie, vergetelheid), beveiliging, en cookiebeleid met `#cookies` anker.
+- **Gebruiksvoorwaarden** (`app/voorwaarden/page.tsx`): Nederlandse gebruiksvoorwaarden op `/voorwaarden`. Behandelt registratie, gedragsregels, gebruikerscontent-licentie, moderatie, aansprakelijkheid en toepasselijk recht.
+- **Cookiebanner** (`components/ui/cookie-banner.tsx`): Informatieve cookiemelding onderaan de pagina. Verschijnt bij eerste bezoek, wordt via localStorage (`cookie-notice-dismissed`) onthouden na sluiten. Links naar `/privacy#cookies`.
+- **docs/legal.md**: Documentatie over juridische pagina's en aandachtspunten voor lancering (`[NAAM]` en `[EMAIL]` placeholders invullen; juridische toetsing aanbevolen).
+
+### Gewijzigd
+- `app/layout.tsx`: `<CookieBanner />` gemount na `<Footer />` in root layout
+- Footer bevat links naar `/privacy` en `/voorwaarden` (bestaand, geverifieerd correct)
+
+---
+
+## Phase 23 — Monitoring
+
+### Toegevoegd
+- **Sentry error tracking** (`sentry.client.config.ts`, `sentry.server.config.ts`, `sentry.edge.config.ts`): @sentry/nextjs geïnstalleerd en geconfigureerd voor client, server en edge runtime. Onafgehandelde uitzonderingen worden automatisch naar Sentry gestuurd.
+- **withSentryConfig** (`next.config.mjs`): next.config.mjs omsloten met withSentryConfig voor automatisch uploaden van source maps bij deployment.
+- **Health check endpoint** (`app/api/health/route.ts`): `GET /api/health` retourneert `{ status: "ok", timestamp }` met HTTP 200 voor uptime monitors.
+- **Structured logging utility** (`lib/logger.ts`): `logEvent(type, userId?)` logt gestructureerde JSON naar stdout (zichtbaar in Vercel Functions logs). Gebruikers-IDs worden gehashed; wachtwoorden en e-mailadressen worden nooit gelogd.
+- **Audit log events**: login (succes/mislukking), registratie, en Q&A vraag/antwoord acties loggen nu structured events.
+- **Monitoring documentatie** (`docs/monitoring.md`): volledige handleiding voor Sentry-setup, uptime monitoring configuratie, en interpretatie van structured logs.
+
+### Gewijzigd
+- `app/login/actions.ts`: logEvent-aanroepen toegevoegd na login en registratie
+- `app/qa/actions.ts`: logEvent-aanroepen toegevoegd na aanmaken vraag en antwoord
+- `.env.example`: Sentry-omgevingsvariabelen gedocumenteerd (NEXT_PUBLIC_SENTRY_DSN, SENTRY_DSN, SENTRY_AUTH_TOKEN, SENTRY_ORG, SENTRY_PROJECT)
+
+---
+
 ## Phase 22 — Deploy & CI/CD
 
 ### Toegevoegd
