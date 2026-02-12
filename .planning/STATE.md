@@ -2,12 +2,12 @@
 
 ## Current Position
 
-Phase: 21 of 25 (Moderatie Basis) - COMPLETE (next: Phase 22)
-Plan: 2 of 2 (in phase)
-Status: Phase 21 complete; Phase 22 (Deploy & CI/CD) is next
-Last activity: 2026-02-11 - Completed 21-02-PLAN.md (ReportForm component, Q&A page integration, /moderatie queue, docs/moderatie.md, CHANGELOG)
+Phase: 28 of 28 (Admin Dashboard: Statistieken & KPI-overzicht) - COMPLETE
+Plan: 1 of 1 (in phase)
+Status: MVP v1.0.0 complete. Milestone 2 (Admin Dashboard) complete — all 3 phases done (26, 27, 28).
+Last activity: 2026-02-12 - Executed phases 26, 27, 28. Commits: 50d9c13 (phase 26), 957f2c6 (phase 27), c87551f (phase 28).
 
-Progress: [=====================---------] 88% (22/25 phases complete)
+Progress: [==============================] 100% MVP | [==============================] Milestone 2 (3/3 phases complete)
 
 ## Accumulated Decisions
 
@@ -121,9 +121,18 @@ None.
 | 20 | 20-01 | Internal linking: RelatedContent Server Component + related.ts utilities + cross-links on blog/tutorial/qa/installatie pages | lib/data/related.ts, components/shared/related-content.tsx, 4 page files, docs/CHANGELOG.md | ✓ 7/7 |
 | 21 | 21-01 | Reports table migration + Report/CreateReportInput types + createReport Server Action + database docs | supabase/migrations/00003_reports.sql, lib/qa/types.ts, app/qa/actions.ts, docs/database-schema.md | ✓ 5/5 |
 | 21 | 21-02 | ReportForm Client Component + Q&A detail page integration + /moderatie moderator queue + moderation docs | components/qa/report-form.tsx, app/qa/vraag/[id]/page.tsx, app/moderatie/page.tsx, docs/moderatie.md, docs/CHANGELOG.md | ✓ 7/7 |
+| 23 | 23-01 | Sentry config files + withSentryConfig in next.config.mjs + /api/health route + docs/monitoring.md | sentry.*.config.ts, next.config.mjs, app/api/health/route.ts, docs/monitoring.md | ✓ |
+| 23 | 23-02 | Structured logging: lib/logger.ts + logEvent in login/qa actions + CHANGELOG | lib/logger.ts, app/login/actions.ts, app/qa/actions.ts, docs/CHANGELOG.md | ✓ |
+| 24 | 24-01 | Privacy policy at /privacy + terms at /voorwaarden + docs/legal.md + CHANGELOG | app/privacy/page.tsx, app/voorwaarden/page.tsx, docs/legal.md, docs/CHANGELOG.md | ✓ |
+| 24 | 24-02 | Cookie banner Client Component + mounted in root layout | components/ui/cookie-banner.tsx, app/layout.tsx | ✓ |
+| 25 | 25-01 | MVP checklist 13/13 PASS + README updated (Node 24+, docs table, MVP badge) | docs/MVP-CHECKLIST.md, README.md | ✓ |
+| 25 | 25-02 | CHANGELOG MVP release entry + git commit b59628e + tag v1.0.0-mvp | docs/CHANGELOG.md | ✓ |
+| 26 | 26-01 | Admin dashboard foundation: service-role client, layout guard, user management (list + detail + role/delete actions) | lib/supabase/admin.ts, app/admin/, components/layout/header.tsx | ✓ |
+| 27 | 27-01 | Moderation actions: reports resolution workflow, content deletion, /admin/content management | supabase/migrations/00004_reports_resolution.sql, app/moderatie/actions.ts, app/admin/content/ | ✓ |
+| 28 | 28-01 | Admin statistics: KPI cards, growth metrics, PRD progress tracker, most active users | lib/admin/stats.ts, app/admin/statistieken/page.tsx | ✓ |
 
 ## Session Continuity
 
-Last session: 2026-02-11T00:00:00Z
-Stopped at: Completed Phase 21 (21-01 + 21-02): reports table, createReport action, ReportForm component, /moderatie queue, moderation docs
+Last session: 2026-02-12T00:00:00Z
+Stopped at: Phase 28 COMPLETE. Milestone 2 (Admin Dashboard) done. Commits: 50d9c13 (ph26), 957f2c6 (ph27), c87551f (ph28). Remaining: git push origin main.
 Resume file: None
