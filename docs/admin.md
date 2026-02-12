@@ -51,6 +51,24 @@ De service-role sleutel staat in `.env.local` als `SUPABASE_SERVICE_ROLE_KEY`. D
 - Door de cascade-relatie in `profiles` wordt ook het profiel verwijderd
 - Content (vragen, antwoorden) blijft behouden maar wordt anoniem
 
-## Statistieken (Phase 28)
+## Statistieken (`/admin/statistieken`)
 
-Zie `docs/admin.md` (uitgebreid na Phase 28 implementatie).
+De statistiekenpagina laadt alle data parallel via `Promise.all` en toont:
+
+**KPI kaarten:**
+- Totaal gebruikers (via admin client — auth.users vereist service role)
+- Totaal vragen en antwoorden
+- Open rapporten (met link naar `/moderatie`)
+
+**Groeikaarten:**
+- Nieuwe vragen in afgelopen 7 dagen
+- Nieuwe vragen in afgelopen 30 dagen
+- PRD-voortgangsbalk: 50 Q&A bijdragen in 90 dagen
+
+**Meest actieve gebruikers:**
+- Top 10 gebruikers op basis van vragen + antwoorden combinatie
+- Data wordt in JS geteld (MVP-aanpak); bij schaal vervangen door Supabase RPC
+
+**Externe meetpunten:**
+- Vercel Analytics (unieke bezoekers, paginaweergaven)
+- Google Search Console (indexatiestatus, zoekopdrachten)

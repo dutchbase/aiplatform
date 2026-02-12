@@ -7,6 +7,17 @@ en dit project volgt [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
+## [Phase 28] - 2026-02-12 - Admin Dashboard: Statistieken & KPI-overzicht
+
+### Toegevoegd
+- `lib/admin/stats.ts` – statistiekenqueries: `getTotalUsers`, `getTotalQuestions`, `getTotalAnswers`, `getOpenReports`, `getNewQuestionsLastDays`, `getMostActiveUsers`
+- `app/admin/statistieken/page.tsx` – statistiekenpagina met KPI-kaarten, groeikaarten, meest actieve gebruikers en links naar externe meetpunten
+
+### Gewijzigd
+- `docs/admin.md` – statistiekensectie gedocumenteerd
+
+---
+
 ## [Phase 27] - 2026-02-12 - Admin Dashboard: Moderatie Acties
 
 ### Toegevoegd
