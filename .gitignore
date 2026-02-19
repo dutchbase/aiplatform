@@ -1,0 +1,24 @@
+# Credentials & Secrets
+.env
+.env.local
+.env.*.local
+.secrets/
+*.key
+*.pem
+id_rsa*
+id_ed25519*
+
+# Logs & Cache
+*.log
+.cache/
+node_modules/
+.DS_Store
+
+# Temporary files
+*.tmp
+*.swp
+*~
+
+# Security scan reports
+secrets-scan-report-*.txt
+gitleaks-report.json
