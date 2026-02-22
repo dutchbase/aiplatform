@@ -1,5 +1,6 @@
 'use server'
 
+import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 import { supabaseAdmin } from '@/lib/supabase/admin'
@@ -23,19 +24,19 @@ async function verifyAdmin() {
   return user
 }
 
-export async function updateUserRole(formData: FormData): Promise<{ error?: string }> {
+export async function updateUserRole(formData: FormData): Promise<void> {
   await verifyAdmin()
 
   const userId = formData.get('userId') as string
   const role = formData.get('role') as string
 
   if (!UUID_REGEX.test(userId)) {
-    return { error: 'Ongeldig gebruikers-ID' }
+    throw new Error('Ongeldig gebruikers-ID')
   }
 
   const validRoles = ['user', 'moderator', 'admin'] as const
   if (!validRoles.includes(role as (typeof validRoles)[number])) {
-    return { error: 'Ongeldige rol' }
+    throw new Error('Ongeldige rol')
   }
 
   const { error } = await supabaseAdmin
@@ -43,21 +44,24 @@ export async function updateUserRole(formData: FormData): Promise<{ error?: stri
     .update({ role, updated_at: new Date().toISOString() })
     .eq('id', userId)
 
-  if (error) return { error: 'Kon rol niet bijwerken' }
-  return {}
+  if (error) throw new Error('Kon rol niet bijwerken')
+
+  revalidatePath('/admin/gebruikers')
+  revalidatePath(`/admin/gebruikers/${userId}`)
 }
 
-export async function deleteUser(formData: FormData): Promise<{ error?: string }> {
+export async function deleteUser(formData: FormData): Promise<void> {
   await verifyAdmin()
 
   const userId = formData.get('userId') as string
 
   if (!UUID_REGEX.test(userId)) {
-    return { error: 'Ongeldig gebruikers-ID' }
+    throw new Error('Ongeldig gebruikers-ID')
   }
 
   const { error } = await supabaseAdmin.auth.admin.deleteUser(userId)
-  if (error) return { error: 'Kon gebruiker niet verwijderen' }
+  if (error) throw new Error('Kon gebruiker niet verwijderen')
 
+  revalidatePath('/admin/gebruikers')
   redirect('/admin/gebruikers')
 }

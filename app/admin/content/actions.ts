@@ -1,6 +1,7 @@
 'use server'
 
 import { redirect } from 'next/navigation'
+import { revalidatePath } from 'next/cache'
 import { createClient } from '@/lib/supabase/server'
 import { supabaseAdmin } from '@/lib/supabase/admin'
 
@@ -23,26 +24,28 @@ async function verifyAdmin() {
   return user
 }
 
-export async function adminDeleteQuestion(questionId: string): Promise<{ error?: string }> {
+export async function adminDeleteQuestion(questionId: string): Promise<void> {
   await verifyAdmin()
 
   if (!UUID_REGEX.test(questionId)) {
-    return { error: 'Ongeldig vraag-ID' }
+    throw new Error('Ongeldig vraag-ID')
   }
 
   const { error } = await supabaseAdmin.from('questions').delete().eq('id', questionId)
-  if (error) return { error: 'Kon vraag niet verwijderen' }
-  return {}
+  if (error) throw new Error('Kon vraag niet verwijderen')
+
+  revalidatePath('/admin/content')
 }
 
-export async function adminDeleteAnswer(answerId: string): Promise<{ error?: string }> {
+export async function adminDeleteAnswer(answerId: string): Promise<void> {
   await verifyAdmin()
 
   if (!UUID_REGEX.test(answerId)) {
-    return { error: 'Ongeldig antwoord-ID' }
+    throw new Error('Ongeldig antwoord-ID')
   }
 
   const { error } = await supabaseAdmin.from('answers').delete().eq('id', answerId)
-  if (error) return { error: 'Kon antwoord niet verwijderen' }
-  return {}
+  if (error) throw new Error('Kon antwoord niet verwijderen')
+
+  revalidatePath('/admin/content')
 }

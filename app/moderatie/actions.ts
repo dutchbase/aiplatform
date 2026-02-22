@@ -1,5 +1,6 @@
 'use server'
 
+import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 import { supabaseAdmin } from '@/lib/supabase/admin'
@@ -28,10 +29,10 @@ async function verifyModerator() {
 export async function resolveReport(
   reportId: string,
   status: 'resolved' | 'dismissed'
-): Promise<{ error?: string }> {
+): Promise<void> {
   const { user, supabase } = await verifyModerator()
 
-  if (!UUID_REGEX.test(reportId)) return { error: 'Ongeldig rapport-ID' }
+  if (!UUID_REGEX.test(reportId)) throw new Error('Ongeldig rapport-ID')
 
   const { error } = await supabase
     .from('reports')
@@ -43,19 +44,20 @@ export async function resolveReport(
     .eq('id', reportId)
     .eq('status', 'open')
 
-  if (error) return { error: 'Kon rapport niet bijwerken' }
-  return {}
+  if (error) throw new Error('Kon rapport niet bijwerken')
+
+  revalidatePath('/moderatie')
 }
 
 export async function deleteContent(
   reportId: string,
   contentType: 'question' | 'answer' | 'reply',
   contentId: string
-): Promise<{ error?: string }> {
+): Promise<void> {
   const { user } = await verifyModerator()
 
   if (!UUID_REGEX.test(reportId) || !UUID_REGEX.test(contentId)) {
-    return { error: 'Ongeldig ID' }
+    throw new Error('Ongeldig ID')
   }
 
   const tableMap = {
@@ -70,10 +72,10 @@ export async function deleteContent(
     .delete()
     .eq('id', contentId)
 
-  if (deleteError) return { error: 'Kon content niet verwijderen' }
+  if (deleteError) throw new Error('Kon content niet verwijderen')
 
   // Mark report as resolved
-  await supabaseAdmin
+  const { error: reportError } = await supabaseAdmin
     .from('reports')
     .update({
       status: 'resolved',
@@ -82,5 +84,7 @@ export async function deleteContent(
     })
     .eq('id', reportId)
 
-  return {}
+  if (reportError) throw new Error('Kon rapport niet afronden')
+
+  revalidatePath('/moderatie')
 }
