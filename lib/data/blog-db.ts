@@ -28,6 +28,10 @@ type BlogRow = {
 }
 
 function mapRow(row: BlogRow): BlogPost {
+  const normalizedSections = Array.isArray(row.sections)
+    ? row.sections.filter((s) => s && typeof s.heading === 'string' && typeof s.content === 'string')
+    : []
+
   return {
     id: row.id,
     slug: row.slug,
@@ -36,8 +40,8 @@ function mapRow(row: BlogRow): BlogPost {
     publishedAt: row.published_at,
     updatedAt: row.updated_at ?? undefined,
     content: {
-      intro: row.intro,
-      sections: row.sections ?? [],
+      intro: row.intro ?? '',
+      sections: normalizedSections,
     },
   }
 }
