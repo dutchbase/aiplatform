@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { blogPosts } from '@/lib/data/blog'
+import { getPublishedBlogPosts } from '@/lib/data/blog-db'
 import { Breadcrumbs } from '@/components/ui/breadcrumbs'
 
 export const metadata: Metadata = {
@@ -19,7 +19,9 @@ function formatDate(dateString: string): string {
   })
 }
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  const blogPosts = await getPublishedBlogPosts()
+
   return (
     <div className="container py-12">
       <div className="max-w-5xl mx-auto">

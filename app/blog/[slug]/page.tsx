@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { redirect } from 'next/navigation'
+import { notFound } from 'next/navigation'
 import { Button } from '@/components/ui/button'
-import { getBlogPost, blogPosts } from '@/lib/data/blog'
+import { getPublishedBlogPostBySlug, getPublishedBlogSlugs } from '@/lib/data/blog-db'
 import { Breadcrumbs } from '@/components/ui/breadcrumbs'
 import { RelatedContent } from '@/components/shared/related-content'
 import { getRelatedPosts } from '@/lib/data/related'
@@ -12,14 +12,13 @@ type Props = {
 }
 
 export async function generateStaticParams() {
-  return blogPosts.map((post) => ({
-    slug: post.slug,
-  }))
+  const slugs = await getPublishedBlogSlugs()
+  return slugs.map((slug) => ({ slug }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const post = getBlogPost(slug)
+  const post = await getPublishedBlogPostBySlug(slug)
 
   if (!post) {
     return {
@@ -44,13 +43,13 @@ function formatDate(dateString: string): string {
 
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params
-  const post = getBlogPost(slug)
+  const post = await getPublishedBlogPostBySlug(slug)
 
   if (!post) {
-    redirect('/blog')
+    notFound()
   }
 
-  const relatedItems = getRelatedPosts(slug)
+  const relatedItems = await getRelatedPosts(slug)
 
   const articleSchema = {
     '@context': 'https://schema.org',

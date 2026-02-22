@@ -2,60 +2,49 @@
 
 ## Databron
 
-De blog gebruikt een **statisch datamodule** in `lib/data/blog.ts`. Dit is dezelfde aanpak als de tutorials sectie (`lib/data/tutorials.ts`). Artikelen zijn TypeScript-objecten in de repository, geen database-records.
+De blog gebruikt nu **Supabase** als bron via tabel `public.blog_posts`.
 
-### Keuze motivatie
+- Lijstpagina: `/blog` leest `status='published'` records
+- Detailpagina: `/blog/[slug]` leest op `slug`
+- Sitemap: bevat dynamische blog-URL's uit dezelfde tabel
 
-- Consistent met het bestaande patroon uit Fase 10 (tutorials)
-- Geen databasemigratie nodig voor statische redactionele content
-- Volledig getypeerd via TypeScript (geen runtime fouten door ontbrekende velden)
-- Eenvoudig te versioned via git — artikelwijzigingen zijn traceerbaar
-- Makkelijk te migreren naar Supabase in een latere fase als dynamisch beheer nodig is
+## Datamodel (`blog_posts`)
 
-## Hoe voeg je een artikel toe?
+Belangrijkste velden:
+- `slug` (unique)
+- `title`
+- `excerpt`
+- `intro`
+- `sections` (jsonb array met `{ heading, content }`)
+- `status` (`draft|review|published|archived`)
+- `published_at`, `updated_at`
+- `seo_title`, `seo_description`, `focus_keyword`
+- `author_type`, `author_name`
 
-1. Open `lib/data/blog.ts`
-2. Voeg een nieuw object toe aan de `blogPosts` array
-3. Houd de array gesorteerd: **nieuwste `publishedAt` bovenaan**
+## Publicatieflow
 
-### Verplichte velden
+Aanbevolen flow:
+1. `draft` — AI of mens schrijft concept
+2. `review` — kwaliteits- en SEO-check
+3. `published` — zichtbaar op site en in sitemap
 
-```typescript
-{
-  slug: 'unieke-url-slug',          // kebab-case, wordt URL: /blog/[slug]
-  title: 'Artikeltitel',
-  excerpt: 'Korte samenvatting...',  // 1-2 zinnen, getoond op overzichtspagina
-  publishedAt: '2026-01-01',         // ISO datum (YYYY-MM-DD)
-  content: {
-    intro: 'Inleidende alinea...',
-    sections: [
-      {
-        heading: 'Sectietitel',
-        content: 'Sectietekst...',
-      },
-    ],
-  },
-}
-```
+## SEO-gedrag
 
-### Optionele velden
+- `generateMetadata` gebruikt titel + excerpt uit database
+- JSON-LD `Article` blijft actief op detailpagina
+- `/sitemap.xml` bevat dynamische `/blog/[slug]` met `lastModified`
+- Ontbrekende slug geeft `404` (`notFound()`)
 
-```typescript
-updatedAt: '2026-01-15',  // Alleen invullen als inhoud na publicatie gewijzigd is.
-                          // Wordt getoond als "Laatst bijgewerkt" op de detailpagina.
-```
+## Dagelijkse AI-publicatie
 
-## Structuur van de detailpagina
+Dagelijkse OpenClaw-job schrijft een nieuw artikel naar `blog_posts`.
 
-- **`generateStaticParams`** — bouwt statische pagina's voor alle bekende slugs
-- **`generateMetadata`** — gebruikt `post.title` als paginatitel, `post.excerpt` als description
-- **Onbekende slug** — redirect naar `/blog` (geen 404)
-- **`updatedAt`** — alleen zichtbaar als het verschilt van `publishedAt`
+Minimale output van de job:
+- `title`, `slug`, `excerpt`
+- `intro`, `sections`
+- `seo_title`, `seo_description`, `focus_keyword`
+- `status` (bij voorkeur eerst `review`)
 
-## Toekomstige uitbreiding
+## Migrations
 
-Als dynamisch contentbeheer nodig wordt (bijv. CMS of Supabase-tabel), is de migratiestap:
-
-1. Maak een `blog_posts` tabel in Supabase met dezelfde veldnamen
-2. Vervang de `blogPosts` array door een `async` fetchfunctie
-3. Pas `generateStaticParams` aan om de tabel te bevragen (of zet op `dynamic = 'force-dynamic'`)
+Zie: `supabase/migrations/00005_blog_posts.sql`

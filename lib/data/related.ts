@@ -1,4 +1,4 @@
-import { blogPosts } from '@/lib/data/blog'
+import { getRelatedBlogPosts } from '@/lib/data/blog-db'
 import { tutorials } from '@/lib/data/tutorials'
 
 export interface RelatedItem {
@@ -6,11 +6,8 @@ export interface RelatedItem {
   href: string
 }
 
-export function getRelatedPosts(currentSlug: string, limit = 3): RelatedItem[] {
-  return blogPosts
-    .filter((post) => post.slug !== currentSlug)
-    .slice(0, limit)
-    .map((post) => ({ title: post.title, href: `/blog/${post.slug}` }))
+export async function getRelatedPosts(currentSlug: string, limit = 3): Promise<RelatedItem[]> {
+  return getRelatedBlogPosts(currentSlug, limit)
 }
 
 export function getRelatedTutorials(currentSlug: string, limit = 3): RelatedItem[] {

@@ -1,7 +1,21 @@
 import type { MetadataRoute } from 'next'
+import { supabaseAdmin } from '@/lib/supabase/admin'
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'
+
+  const { data: blogRows } = await supabaseAdmin
+    .from('blog_posts')
+    .select('slug, updated_at, published_at')
+    .eq('status', 'published')
+    .lte('published_at', new Date().toISOString())
+
+  const blogUrls = (blogRows ?? []).map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: new Date(post.updated_at ?? post.published_at),
+    changeFrequency: 'weekly' as const,
+    priority: 0.7,
+  }))
 
   return [
     // Home
@@ -101,5 +115,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.3,
     },
+
+    // Dynamic blog post URLs
+    ...blogUrls,
   ]
 }
