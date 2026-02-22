@@ -3,6 +3,7 @@
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
+import { logEvent } from '@/lib/logger'
 
 export async function login(formData: FormData) {
   const supabase = await createClient()
@@ -10,15 +11,17 @@ export async function login(formData: FormData) {
   const email = formData.get('email') as string
   const password = formData.get('password') as string
 
-  const { error } = await supabase.auth.signInWithPassword({
+  const { data, error } = await supabase.auth.signInWithPassword({
     email,
     password,
   })
 
   if (error) {
+    logEvent('login_failure')
     redirect('/login?error=invalid-credentials')
   }
 
+  logEvent('login_success', data.user?.id)
   revalidatePath('/', 'layout')
   redirect('/')
 }
@@ -30,7 +33,7 @@ export async function signup(formData: FormData) {
   const password = formData.get('password') as string
   const display_name = formData.get('display_name') as string
 
-  const { error } = await supabase.auth.signUp({
+  const { data, error } = await supabase.auth.signUp({
     email,
     password,
     options: {
@@ -44,6 +47,7 @@ export async function signup(formData: FormData) {
     redirect('/login?error=signup-failed')
   }
 
+  logEvent('signup', data.user?.id ?? undefined)
   revalidatePath('/', 'layout')
   redirect('/login?message=check-email')
 }

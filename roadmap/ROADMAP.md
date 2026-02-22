@@ -323,12 +323,57 @@ Plans:
 
 ---
 
-## Na MVP (niet in deze roadmap-iteraties opgedeeld)
+## Fase 26 – Admin Dashboard: Basis & Gebruikersbeheer
 
-- **Fase 2 (PRD):** Meer tools (Cursor, Claude Code), AI-bots, ads, zoek, nieuwsbrief.
-- **Fase 3 (PRD):** Premium content, API, managed AI-diensten.
+**Goal:** `/admin` sectie met service-role client, admin-only layout guard, dashboardhomepagina, gebruikerslijst met paginering, rolwijziging, en gebruiker verwijderen.
 
-Deze worden in latere roadmap-iteraties opgedeeld in kleine fases.
+**Plans:** 1 plan
+
+Plans:
+- [ ] 26-01-PLAN.md — Service-role client, admin layout guard, gebruikerslijst, rolbeheer, delete
+
+**Document:** [phase-26-admin-dashboard.md](./phase-26-admin-dashboard.md)
+
+---
+
+## Fase 27 – Admin Dashboard: Moderatie Acties
+
+**Goal:** Resolutie-workflow voor rapporten (status, resolved_by, resolved_at), actieknoppen in moderatie-queue (content verwijderen, rapport sluiten), admin content-beheerpagina.
+
+**Plans:** 1 plan
+
+Plans:
+- [ ] 27-01-PLAN.md — Reports migration, resolveReport/deleteContent actions, moderatie tabs & knoppen, admin content pagina
+
+**Document:** [phase-27-moderatie-acties.md](./phase-27-moderatie-acties.md)
+
+---
+
+## Fase 28 – Admin Dashboard: Statistieken
+
+**Goal:** `/admin/statistieken` met KPI-kaarten (gebruikers, vragen, antwoorden, open rapporten), groeidata (7d/30d), top 10 meest actieve gebruikers.
+
+**Plans:** 1 plan
+
+Plans:
+- [ ] 28-01-PLAN.md — lib/admin/stats.ts query-laag, statistieken dashboard pagina
+
+**Document:** [phase-28-admin-statistieken.md](./phase-28-admin-statistieken.md)
+
+---
+
+## Na MVP – Verdere Roadmap (toekomstige iteraties)
+
+- **Fase 29:** Q&A geaccepteerd antwoord, eigen vraag/antwoord bewerken/verwijderen.
+- **Fase 30:** Q&A paginering en zoekfunctie.
+- **Fase 31:** Database-gedreven blog (CRUD in admin, weg van statische TypeScript-bestanden).
+- **Fase 32:** Database-gedreven tutorials (zelfde patroon als Fase 31).
+- **Fase 33:** Kennisbank uitbouwen (momenteel lege stub-pagina).
+- **Fase 34:** E-mail notificaties (antwoord op vraag, reactie op antwoord).
+- **Fase 35+ (PRD Fase 2):** Meer tools (Cursor, Claude Code), AI-bots, zoek, nieuwsbrief.
+- **Fase 36+ (PRD Fase 3):** Premium content, API, managed AI-diensten.
+
+Worden opgedeeld in kleine fases bij aanvang van de volgende milestone.
 
 ---
 

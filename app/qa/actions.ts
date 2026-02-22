@@ -3,6 +3,7 @@
 import { revalidatePath } from 'next/cache'
 import { createClient } from '@/lib/supabase/server'
 import type { CreateQuestionInput, CreateAnswerInput, CreateReplyInput, CreateReportInput } from '@/lib/qa/types'
+import { logEvent } from '@/lib/logger'
 
 export async function createQuestion(
   formData: FormData
@@ -34,6 +35,7 @@ export async function createQuestion(
 
   if (error) return { error: 'Er is iets misgegaan. Probeer het opnieuw.' }
 
+  logEvent('qa_question_created', user.id)
   revalidatePath('/qa')
   return { id: (data as { id: string }).id }
 }
@@ -70,6 +72,7 @@ export async function createAnswer(
 
   if (error) return { error: 'Er is iets misgegaan. Probeer het opnieuw.' }
 
+  logEvent('qa_answer_created', user.id)
   revalidatePath('/qa')
   revalidatePath(`/qa/vraag/${input.question_id}`)
   return { id: (data as { id: string }).id }
